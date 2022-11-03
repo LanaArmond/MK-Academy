@@ -1,3 +1,29 @@
+![Logo MK Academy](./public/img/MK%20Academy%20LOGO01%20-%20Sem%20Fundo.png)
+
+## Trabalho de Modelagem de Sistemas (DCC117) - UFJF - 2022.3
+
+Professor Fabrício Martins Mendonça
+Universidade Federal de Juiz de Fora - MG - Brasil
+
+## Desenvolvedores
+
+- [Ana Beatriz Lana Maciel Moreira Armond (202165501B)](https://github.com/SilverBlitzy).
+- [Gustavo Carvalhaes da Fonseca Ferreira (202065522B)](https://github.com/gustavirus).
+- [Kayan Martins de Freitas (202176030)](https://github.com/Kaymartins).
+- [Pedro Leopoldo Dal-Col Vianna (202065518B)](https://github.com/Leopalds).
+
+## Links/Arquivos
+
+- [Primeira Entrega](https://docs.google.com/document/d/1RCtWgVVgl_X5PuxZpnfBza1ZaCrwgSVFgUghcUF2bUk/edit).
+- [Segunda Entrega]().
+
+## Como rodar o projeto localmente
+
+...
+
+____________________________________________________________________________________________________
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
