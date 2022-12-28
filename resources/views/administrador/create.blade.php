@@ -26,10 +26,7 @@
                     <label for="email" class="required">E-mail</label>
                     <input type="email" name="email" id="email" class="form-control" required="" value="{{ old('email', $admin->email) }}">
                 </div>
-                <div class="form-group col-sm-6">  
-                    <label for="picture">Imagem </label>
-                    <input type="file" accept="image/*" class="form-control-file" name="image">
-                </div>
+                
             </div>
             <div class="row">
                 <div class="form-group col-6">
@@ -48,6 +45,10 @@
                     <input autocomplete="new-password" type="password" class="senhaID form-control" name="password_confirmation" id="password">
                 </div>
             </div>
+        </div>
+        <div class="form-group col-sm-6">  
+            <label for="picture">Imagem </label>
+            <input type="file" accept="image/*" class="form-control-file" name="image">
         </div>
         <div class="card-footer d-flex justify-content-end">
             <a type="button" href="{{ route('admin.index') }}" class="btn btn-danger mr-3 float-right">Cancelar</a>
