@@ -13,12 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('admin', function (Blueprint $table) {
+        Schema::create('admins', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('email');
+            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('picture');
+            $table->rememberToken();
+            $table->string('picture')->default("profile_default.png");
             $table->timestamps();
         });
     }

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AdminRequest;
 use App\Models\Admin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -16,7 +18,7 @@ class AdminController extends Controller
     public function index()
     {
         $admins = Admin::all();
-        return view('admin.index', compact('admins'));
+        return view('administrador.index', compact('admins'));
     }
 
     /**
@@ -26,7 +28,8 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('admin.create');
+        $admin = new Admin();
+        return view('administrador.create', compact('admin'));
     }
 
     /**
@@ -35,9 +38,16 @@ class AdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AdminRequest $request, Admin $admin)
+    public function store(Request $request)
     {
-        
+
+        Admin::create([
+            'name' => Crypt::encryptString($request->name),
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        return redirect()->route('admin.index')->with('success', true);
     }
 
     /**
@@ -80,8 +90,9 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Admin $admin)
     {
-        //
+        $admin->delete();
+        return redirect('admin/');
     }
 }
