@@ -36,7 +36,7 @@ Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 Route::get('/admin/create', [AdminController::class, 'create'])->name('admin.create');
 Route::post('/admin/store', [AdminController::class, 'store'])->name('admin.store');
 Route::get('/admin/{admin}/edit', [AdminController::class, 'edit'])->name('admin.edit');
-Route::post('/admin/update/{admin}', [AdminController::class, 'update'])->name('admin.update');
+Route::post('/admin/{admin}/update/', [AdminController::class, 'update'])->name('admin.update');
 Route::delete('/admin/{admin}/destroy', [AdminController::class, 'destroy'])->name('admin.destroy');
 Route::get('/admin/{admin}/show', [AdminController::class, 'show'])->name('admin.show');
 

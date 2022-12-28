@@ -40,7 +40,6 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-
         Admin::create([
             'name' => Crypt::encryptString($request->name),
             'email' => $request->email,
@@ -56,9 +55,11 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Admin $admin)
     {
-        //
+        $admin->name = $admin->getDecrypted($admin->name);
+
+        return view('administrador.show', compact('admin'));
     }
 
     /**
@@ -67,9 +68,11 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Admin $admin)
     {
-        //
+        $admin->name = $admin->getDecrypted($admin->name);
+
+        return view('administrador.edit', compact('admin'));
     }
 
     /**
@@ -79,9 +82,22 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Admin $admin)
     {
-        //
+        $data = $request->all();
+
+        if ($request->hasfile('image')) {
+            $extesion = $request->image->getClientOriginalExtension();
+            $slug = str_slug($request->name);
+            $nameFile = "{$slug}.{$extesion}";
+            $request->image->storeAs('public/img', $nameFile);
+            $data['image'] = 'img/' . $nameFile;
+        } else {
+            unset($data['image']);
+        }
+        $data['name'] = Crypt::encryptString($request->name);
+        $admin->update($data);
+        return redirect()->route('admin.index')->with('success', true);
     }
 
     /**
