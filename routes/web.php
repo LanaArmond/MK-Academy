@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ExerciseController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Admin;
 use Illuminate\Support\Facades\Hash;
@@ -31,6 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 
+    Route::resource('exercises', ExerciseController::class)->names('exercises');
 });
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 Route::get('/admin/create', [AdminController::class, 'create'])->name('admin.create');
