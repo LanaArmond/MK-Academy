@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Client;
+use App\Http\Requests\StoreClientRequest;
+use App\Http\Requests\UpdateClientRequest;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
 
 class ClientController extends Controller
 {
@@ -38,8 +41,10 @@ class ClientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreClientRequest $request)
     {
+        $request->validated();
+
         Client::create([
             'name' => Crypt::encryptString($request->name),
             'email' => $request->email,
@@ -91,9 +96,9 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Client $client)
+    public function update(UpdateClientRequest $request, Client $client)
     {
-        $data = $request->all();
+        $data = $request->validated();
         unset($data['password_confirmation']);
 
         if($request->hasfile('image')){
@@ -106,10 +111,18 @@ class ClientController extends Controller
             unset($data['image']);
         }
 
+
+
         $data['name'] = Crypt::encryptString($request->name);
         $data['cpf'] = Crypt::encryptString($request->cpf);
         $data['phone'] = Crypt::encryptString($request->phone);
-        $data['password'] = Hash::make($request->password);
+
+        if(!$request->password){
+            unset($data['password']);
+        }else{
+            $data['password'] = Hash::make($request->password);
+        }
+
 
         $client->update($data);
 
@@ -124,6 +137,7 @@ class ClientController extends Controller
      */
     public function destroy(Client $client)
     {
+        File::delete('img/' . $client->image);
         $client->delete();
         return redirect()->route('clients.index')->with('success', true);
     }
