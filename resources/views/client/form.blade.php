@@ -54,3 +54,35 @@
 
 
 </div>
+
+@push('scripts')
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.0/jquery.mask.js"></script>
+
+    <script>
+        
+        //VISUALIZAÇÃO DE SENHA
+        $(document).ready(function(){
+            $('#visible').click(function(){
+                if($('#password').attr('type') == 'password'){
+                    $('#password').attr('type', 'text');
+                    $('#icon').removeClass('fa-eye-slash');
+                    $('#icon').addClass('fa-eye');
+                }else{
+                    $('#password').attr('type', 'password');
+                    $('#icon').removeClass('fa-eye');
+                    $('#icon').addClass('fa-eye-slash');
+                }
+            });
+        });
+
+        //MASCARA DE CPF
+        $(document).ready(function(){
+            $('#cpf').mask('000.000.000-00', {reverse: true});
+        });
+
+        //MASCARA DE TELEFONE
+        $(document).ready(function(){
+            $('#phone').mask('(00) 00000-0000');
+        });
+    </script>
+@endpush
