@@ -45,12 +45,12 @@
             <label for="password">Confirme sua senha</label>
             <input autocomplete="new-password" type="password" class="senhaID form-control" name="password_confirmation" id="password">
         </div>
-    @endif
 
-    <div class="form-group col-sm-6 mt-2">
-        <label for="image" class="required">imagem</label>
-        <input type="file" accept="image/*" class="form-control-file" name="image">
-    </div>
+        <div class="form-group col-sm-6 mt-2">
+            <label for="image" class="required">imagem</label>
+            <input type="file" accept="image/*" class="form-control-file" name="image">
+        </div>
+    @endif
 
 
 </div>

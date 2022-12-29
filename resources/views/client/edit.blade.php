@@ -2,11 +2,12 @@
 
 @section('content')
 
-@component('components.create')
-    @slot('title', 'Cadastrar Aluno')
-    @slot('url', route('clients.store'))
+@component('components.edit')
+    @slot('title', 'Editar Aluno')
+    @slot('url', route('clients.update', $client->id))
     @slot('form')
         @include('client.form', ['create' => true])
     @endslot
+
 @endcomponent
 @endsection

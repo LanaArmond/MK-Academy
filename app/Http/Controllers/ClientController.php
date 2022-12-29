@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Client;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class ClientController extends Controller
 {
@@ -74,9 +75,13 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Client $client)
     {
-        //
+        $client->name = $client->getDecrypted($client->name);
+        $client->cpf = $client->getDecrypted($client->cpf);
+        $client->phone = $client->getDecrypted($client->phone);
+
+        return view('client.edit', compact('client'));
     }
 
     /**
@@ -86,9 +91,29 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Client $client)
     {
-        //
+        $data = $request->all();
+        unset($data['password_confirmation']);
+
+        if($request->hasfile('image')){
+            $ext = $request->image->getClientOriginalExtension();
+            $slug = Str::slug($request->name, '-');
+            $name = "{$slug}.{$ext}";
+            $request->image->storeAs('public/img', $name);
+            $data['image'] = 'img/' . $name;
+        }else{
+            unset($data['image']);
+        }
+
+        $data['name'] = Crypt::encryptString($request->name);
+        $data['cpf'] = Crypt::encryptString($request->cpf);
+        $data['phone'] = Crypt::encryptString($request->phone);
+        $data['password'] = Hash::make($request->password);
+
+        $client->update($data);
+
+        return redirect()->route('clients.index')->with('success', true);
     }
 
     /**
