@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\ExerciseController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Admin;
+use App\Models\Client;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +34,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::resource('exercises', ExerciseController::class)->names('exercises');
+
+    Route::resource('clients', ClientController::class)->names('clients');
 
 });
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');

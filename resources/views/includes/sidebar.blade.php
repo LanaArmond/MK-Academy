@@ -68,7 +68,7 @@
                with font-awesome or any other icon font library -->
                <li class="nav-item">
                   <a class="nav-link {{ Route::is('clients.index') ? 'active' : '' }}"  
-                    {{-- href="{{ route('clients.index') }}" --}}
+                    href="{{ route('clients.index') }}"
                   >
                       <i class="fas fa-fw fa-users "></i>
                       <p> Alunos </p>
