@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\ExerciseController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Admin;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +32,15 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::resource('exercises', ExerciseController::class)->names('exercises');
+
 });
+Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+Route::get('/admin/create', [AdminController::class, 'create'])->name('admin.create');
+Route::post('/admin/store', [AdminController::class, 'store'])->name('admin.store');
+Route::get('/admin/{admin}/edit', [AdminController::class, 'edit'])->name('admin.edit');
+Route::post('/admin/{admin}/update/', [AdminController::class, 'update'])->name('admin.update');
+Route::delete('/admin/{admin}/destroy', [AdminController::class, 'destroy'])->name('admin.destroy');
+Route::get('/admin/{admin}/show', [AdminController::class, 'show'])->name('admin.show');
+
 
 require __DIR__.'/auth.php';
