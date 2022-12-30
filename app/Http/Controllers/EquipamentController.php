@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EquipamentRequest;
 use Illuminate\Http\Request;
 use App\Models\Equipament;
 use Faker\Core\File;
@@ -38,9 +39,9 @@ class EquipamentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EquipamentRequest $request)
     {
-        $data = $request->all();
+        $data = $request->validated();
 
         if($request->hasfile('image')){
             $ext = $request->image->getClientOriginalExtension();
@@ -87,9 +88,9 @@ class EquipamentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Equipament $equipament)
+    public function update(EquipamentRequest $request, Equipament $equipament)
     {
-        $data = $request->all();
+        $data = $request->validated();
 
         if($request->hasfile('image')){
             $ext = $request->image->getClientOriginalExtension();
