@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.adminlte')
 @section('content')
     @include('includes.success')
     <div class="py-12">
@@ -8,12 +8,12 @@
                     @slot('create', route('exercises.create'))
                     @slot('title', 'Exercícios')
                     @slot('head')
-                        <th width="10%">Nome</th>
+                        <th width="7%">Nome</th>
                         <th width="10%">Descrição</th>
-                        <th width="10%">Número de Séries</th>
-                        <th width="10%">Número de Repetições</th>
-                        <th width="10%">Video Tutorial</th>
-                        <th width="10%"></th>
+                        <th width="5%">Número de Séries</th>
+                        <th width="5%">Número de Repetições</th>
+                        <th width="7%">Video Tutorial</th>
+                        <th width="16%"></th>
                     @endslot
                     @slot('body')
                         @foreach ($exercises as $exercise)
@@ -55,5 +55,4 @@
 @push('scripts')
     <script src="{{ asset('js/components/dataTable.js') }}"></script>
     <script src="{{ asset('js/components/sweetAlert.js') }}"></script>
-
 @endpush
