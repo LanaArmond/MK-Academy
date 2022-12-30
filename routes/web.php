@@ -3,6 +3,7 @@
 use App\Http\Controllers\ExerciseController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\EquipamentController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Admin;
 use App\Models\Client;
@@ -36,6 +37,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('exercises', ExerciseController::class)->names('exercises');
 
     Route::resource('clients', ClientController::class)->names('clients');
+
+    Route::resource('equipaments', EquipamentController::class)->names('equipaments');
 
 });
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');

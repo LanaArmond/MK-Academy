@@ -95,7 +95,7 @@
 
                 <li class="nav-item">
                     <a class="nav-link  {{ Route::is('equipaments.index') ? 'active' : '' }}" 
-                    {{-- href="{{route('equipaments.index')}}" --}}
+                    href="{{route('equipaments.index')}}"
                     >
                         <i class="fas fa-fw fal fa-dumbbell "></i>
                         <p> Equipamentos </p>

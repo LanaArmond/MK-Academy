@@ -7,7 +7,7 @@
                     <div class="float-right mr-2">
                         <div class="input-group input-group-sm">
                             <a href="{{ $create }}">
-                                <button type="button" class="btn btn-primary button-create">
+                                <button type="button" class="btn btn-dark button-create">
                                     <b><i class="fas fa-plus-circle"></i> Adicionar</b>
                                 </button>
                             </a>
