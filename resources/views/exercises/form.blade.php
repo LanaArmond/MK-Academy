@@ -21,7 +21,19 @@
     </div>
     
     <div class="form-group col-sm-6">
+        <label for="equipment_id" class="required">Equipamento</label>
+        <select name="equipment_id" id="equipment_id" value="{{old('equipment_id', $exercise->equipment)}}" class="form-control" required>
+            @foreach( $equipments as $equipment)
+                <option {{ $equipment->id == $exercise->equipment->id ? 'selected' : ''}} value="{{ $equipment->id }}">
+                    {{ $equipment->name }}
+                </option>
+            @endforeach
+        </select>
+    </div>
+
+    <div class="form-group col-sm-6">
         <label for="description" class="required">Descrição</label>
         <textarea name="description" id="description" cols="20" rows=5" class="form-control" required >{{ old('description', $exercise->description )}}</textarea>
     </div>
+
 </div>

@@ -18,4 +18,12 @@ class Exercise extends Model
     {
         return $this->belongsToMany(Card::class)->withTimestamps();
     }
+
+    /**
+     * Get the Equipment that owns the Exercise.
+     */
+    public function equipment()
+    {
+        return $this->belongsTo(Equipment::class);
+    }
 }
