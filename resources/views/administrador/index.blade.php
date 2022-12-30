@@ -14,8 +14,8 @@
 
     <div class="row">
         @foreach ($admins as $admin)
-            
-      
+
+
             <div class="col-md-3 mt-2">
                 <div class="card card-outline">
                     <div class="card-body box-profile">

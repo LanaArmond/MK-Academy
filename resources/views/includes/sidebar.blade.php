@@ -67,7 +67,7 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                <li class="nav-item">
-                  <a class="nav-link {{ Route::is('clients.index') ? 'active' : '' }}"  
+                  <a class="nav-link {{ Route::is('clients.index') ? 'active' : '' }}"
                     {{-- href="{{ route('clients.index') }}" --}}
                   >
                       <i class="fas fa-fw fa-users "></i>
@@ -77,7 +77,7 @@
 
                 <li class="nav-item">
                     <a class="nav-link  {{ Route::is('teachers.index') ? 'active' : '' }}"
-                      {{-- href="{{ route('teachers.index') }}" --}}
+                      href="{{ route('personals.index') }}"
                     >
                         <i class="fas fa-fw far fa-chalkboard-teacher "></i>
                         <p> Professores </p>
@@ -85,7 +85,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link {{ Route::is('admin.index') ? 'active' : '' }}" 
+                    <a class="nav-link {{ Route::is('admin.index') ? 'active' : '' }}"
                       href="{{route('admin.index')}}"
                     >
                         <i class="fas fa-fw fas fa-user-cog "></i>
@@ -94,7 +94,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link  {{ Route::is('equipaments.index') ? 'active' : '' }}" 
+                    <a class="nav-link  {{ Route::is('equipaments.index') ? 'active' : '' }}"
                     {{-- href="{{route('equipaments.index')}}" --}}
                     >
                         <i class="fas fa-fw fal fa-dumbbell "></i>
@@ -103,14 +103,14 @@
                 </li>
 
                 <li class="nav-item">
-                  <a class="nav-link  {{ Route::is('exercises.index') ? 'active' : '' }}" 
+                  <a class="nav-link  {{ Route::is('exercises.index') ? 'active' : '' }}"
                   href="{{route('exercises.index')}}"
                   >
                       <i class="fas fa-fw fal fa-solid fa-person-running"></i>
                       <p> Exercícios </p>
                   </a>
               </li>
-                
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

@@ -3,6 +3,7 @@
 use App\Http\Controllers\ExerciseController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PersonalController;
 use App\Models\Admin;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
@@ -34,6 +35,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('exercises', ExerciseController::class)->names('exercises');
 
 });
+
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 Route::get('/admin/create', [AdminController::class, 'create'])->name('admin.create');
 Route::post('/admin/store', [AdminController::class, 'store'])->name('admin.store');
@@ -41,6 +43,14 @@ Route::get('/admin/{admin}/edit', [AdminController::class, 'edit'])->name('admin
 Route::post('/admin/{admin}/update/', [AdminController::class, 'update'])->name('admin.update');
 Route::delete('/admin/{admin}/destroy', [AdminController::class, 'destroy'])->name('admin.destroy');
 Route::get('/admin/{admin}/show', [AdminController::class, 'show'])->name('admin.show');
+
+Route::get('/personal', [PersonalController::class, 'index'])->name('personals.index');
+Route::get('/personal/create', [PersonalController::class, 'create'])->name('personals.create');
+Route::post('/personal/store', [PersonalController::class, 'store'])->name('personals.store');
+Route::get('/personal/{personal}/edit', [PersonalController::class, 'edit'])->name('personals.edit');
+Route::post('/personal/{personal}/update/', [PersonalController::class, 'update'])->name('personals.update');
+Route::delete('/personal/{personal}/destroy', [PersonalController::class, 'destroy'])->name('personals.destroy');
+Route::get('/personal/{personal}/show', [PersonalController::class, 'show'])->name('personals.show');
 
 
 require __DIR__.'/auth.php';
