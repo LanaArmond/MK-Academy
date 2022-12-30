@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\ExerciseController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ExerciseController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PersonalController;
 use App\Models\Admin;
@@ -32,8 +32,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::resource('exercises', ExerciseController::class)->names('exercises');
 
+    Route::resource('exercises', ExerciseController::class)->names('exercises');
 });
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
@@ -48,7 +48,7 @@ Route::get('/personal', [PersonalController::class, 'index'])->name('personals.i
 Route::get('/personal/create', [PersonalController::class, 'create'])->name('personals.create');
 Route::post('/personal/store', [PersonalController::class, 'store'])->name('personals.store');
 Route::get('/personal/{personal}/edit', [PersonalController::class, 'edit'])->name('personals.edit');
-Route::post('/personal/{personal}/update/', [PersonalController::class, 'update'])->name('personals.update');
+Route::put('/personal/{personal}/update/', [PersonalController::class, 'update'])->name('personals.update');
 Route::delete('/personal/{personal}/destroy', [PersonalController::class, 'destroy'])->name('personals.destroy');
 Route::get('/personal/{personal}/show', [PersonalController::class, 'show'])->name('personals.show');
 

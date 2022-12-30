@@ -2,65 +2,68 @@
 
 namespace Database\Seeders;
 
-use App\Models\Admin;
+use App\Models\Personal;
 use App\Models\User;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
 
-
-
-class AdminsSeeder extends Seeder
+class PersonalSeeder extends Seeder
 {
     public function run()
     {
-    
+
         User::create([
-            'name' => Crypt::encryptString('Admin'),
-            'email' => 'admin@mkacademy.com',
+            'name' => Crypt::encryptString('Ricardo Moreira'),
+            'email' => 'ricardo@gmail.com',
             'email_verified_at' => now(),
-            'type' => "0",
-            // deixei sem foto mesmo
+            'type' => "1",
             'password' => '$2y$10$D0ZhzhBF0pVZqSKxCIuGgum4iXHTdgnyQ.oShXfs31YwECSBuYH62', // password: 12345678
             'remember_token' => Str::random(10),
         ]);
         User::create([
-            'name' => Crypt::encryptString('Poldin'),
-            'email' => 'leopalds@mkacademy.com',
+            'name' => Crypt::encryptString('Jéssica Camargo'),
+            'email' => 'jessica@gmail.com',
             'email_verified_at' => now(),
-            'type' => "0",
-            // deixei sem foto mesmo
+            'type' => "1",
             'password' => '$2y$10$D0ZhzhBF0pVZqSKxCIuGgum4iXHTdgnyQ.oShXfs31YwECSBuYH62', // password: 12345678
             'remember_token' => Str::random(10),
         ]);
         User::create([
-            'name' => Crypt::encryptString('Laninha'),
-            'email' => 'lanadosreis@mkacademy.com',
+            'name' => Crypt::encryptString('Bianca Andrade'),
+            'email' => 'bianca@gmail.com',
             'email_verified_at' => now(),
-            'type' => "0",
-            // deixei sem foto mesmo
+            'type' => "1",
             'password' => '$2y$10$D0ZhzhBF0pVZqSKxCIuGgum4iXHTdgnyQ.oShXfs31YwECSBuYH62', // password: 12345678
             'remember_token' => Str::random(10),
         ]);
         User::create([
-            'name' => Crypt::encryptString('Kayanzada'),
-            'email' => 'martinsk@mkacademy.com',
+            'name' => Crypt::encryptString('Carlos Silva'),
+            'email' => 'carlos@gmail.com',
             'email_verified_at' => now(),
-            'type' => "0",
-            // deixei sem foto mesmo
+            'type' => "1",
             'password' => '$2y$10$D0ZhzhBF0pVZqSKxCIuGgum4iXHTdgnyQ.oShXfs31YwECSBuYH62', // password: 12345678
             'remember_token' => Str::random(10),
         ]);
         User::create([
-            'name' => Crypt::encryptString('gustavara'),
-            'email' => 'gusta@mkacademy.com',
+            'name' => Crypt::encryptString('Samuel Peixoto'),
+            'email' => 'samuela@gmail.com',
             'email_verified_at' => now(),
-            'type' => "0",
-            'picture' => "0dd834eb4b88d49370ceba88eba214f2", // é o batma
+            'type' => "1",
+            'picture' => "0dd834eb4b88d49370ceba88eba214f2",
             'password' => '$2y$10$D0ZhzhBF0pVZqSKxCIuGgum4iXHTdgnyQ.oShXfs31YwECSBuYH62', // password: 12345678
             'remember_token' => Str::random(10),
         ]);
-       
+        User::create([
+            'name' => Crypt::encryptString('David Macedo'),
+            'email' => 'david@gmail.com',
+            'email_verified_at' => now(),
+            'type' => "1",
+            'picture' => "0dd834eb4b88d49370ceba88eba214f2",
+            'password' => '$2y$10$D0ZhzhBF0pVZqSKxCIuGgum4iXHTdgnyQ.oShXfs31YwECSBuYH62', // password: 12345678
+            'remember_token' => Str::random(10),
+        ]);
+
     }
 }

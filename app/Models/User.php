@@ -12,7 +12,7 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
-    
+
     public function getDecrypted($value){
         return Crypt::decryptString($value);
     }
@@ -26,6 +26,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'cpf',
+        'number',
+        'picture',
+        'type' // estou considerando type 0 para admin, 1 para professor
     ];
 
     /**

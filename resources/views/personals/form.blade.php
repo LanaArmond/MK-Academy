@@ -1,5 +1,4 @@
-<form method="POST" action="{{ $url ?? '/' }}" enctype="multipart/form-data">
-    @csrf
+
     <div class="row">
         <div class="form-group col-sm-12 col-md-6">
             <label for="name" class="required">Nome: </label>
@@ -32,4 +31,3 @@
                 <input type="file" accept="image/*" class="form-control-file" name="picture" id="picture">
             </div>
     </div>
-</form>

@@ -14,9 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function(Blueprint $table){
-            $table->string('cpf')->nullable();
-            $table->string('number')->nullable();
-            $table->string('birth_date')->nullable();
+            $table->string('type')->nullable();
+            $table->string('picture')->default("0a65f647f6f58c6cd55ddc3608c629de");
         });
     }
 

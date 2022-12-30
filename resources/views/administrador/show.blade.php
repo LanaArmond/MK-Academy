@@ -14,15 +14,13 @@
             <div class="card-header">
                 <h5>Visualizando {{ $admin->name }}</h5>
             </div>
-        <div class="card-body">
-            <form>
-                <fieldset disabled>
+        <div class="card-body box-profile">
                 <div class="row">
-                    <div class="form-group col-sm-12 col-md-6">
-                        <img class="profile-user-img img-fluid img-circle" style="height: 100px;width:100px" src="" alt="User profile picture">
+                    <div class="text-center">
+                        <img class="profile-user-img img-fluid img-circle" style="height: 100px;width:100px" src="img/profilePic/{{ $admin->picture }}" alt="User profile picture">
                     </div>
                 </div>
-
+            <fieldset disabled>
                 <div class="row">
                     <div class="form-group col-sm-12 col-md-6">
                         <label for="exampleFormControlTextarea1">Nome</label>
@@ -34,8 +32,7 @@
                     </div>
                     
                 </div>
-                </fieldset>
-            </form>
+            </fieldset>
         </div>
 
         <div class="card-footer d-flex justify-content-end">
@@ -47,10 +44,3 @@
     </div>
 @stop
  
-@section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
-@stop
-
-@section('js')
-    <script> console.log('Hi!'); </script>
-@stop

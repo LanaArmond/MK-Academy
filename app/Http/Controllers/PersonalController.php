@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Personal;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Hash;
@@ -17,7 +18,7 @@ class PersonalController extends Controller
      */
     public function index()
     {
-        $personals = Personal::all();
+        $personals = User::where('type', "1")->get();
         return view('personals.index', compact('personals'));
     }
 
@@ -28,7 +29,7 @@ class PersonalController extends Controller
      */
     public function create()
     {
-        $personal = new Personal();
+        $personal = new User();
         return view('personals.create', compact('personal'));
     }
 
@@ -50,8 +51,9 @@ class PersonalController extends Controller
             $requestImg->move(public_path('img/profilePic'), $imgName);
         }
 
-        Personal::create([
-            'name' => $request->name,
+        User::create([
+            'name' => Crypt::encryptString($request->name),
+            'type' => "1",
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'picture' => $imgName
@@ -66,9 +68,9 @@ class PersonalController extends Controller
      * @param  \App\Models\Personal  $personal
      * @return \Illuminate\Http\Response
      */
-    public function show(Personal $personal)
+    public function show(User $personal)
     {
-        $personal->name = $personal->name;
+        $personal->name = $personal->getDecrypted($personal->name);
         return view('personals.show', compact('personal'));
     }
 
@@ -78,9 +80,9 @@ class PersonalController extends Controller
      * @param  \App\Models\Personal  $personal
      * @return \Illuminate\Http\Response
      */
-    public function edit(Personal $personal)
+    public function edit(User $personal)
     {
-        $personal->name = $personal->name;
+        $personal->name = $personal->getDecrypted($personal->name);
         return view('personals.edit', compact('personal'));
     }
 
@@ -91,25 +93,24 @@ class PersonalController extends Controller
      * @param  \App\Models\Personal  $personal
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Personal $personal)
+    public function update(Request $request, User $personal)
     {
         $data = $request->all();
 
-        if ($request->hasfile('picture'))
-        {
-            $extesion = $request->picture->getClientOriginalExtension();
-            $slug = Str::slug($request->name);
-            $nameFile = "{$slug}.{$extesion}";
-            $request->picture->storeAs('public/img', $nameFile);
-            $data['picture'] = 'img/' . $nameFile;
-        }
-        else
-        {
-            unset($data['picture']);
+        if($request->hasFile('picture') && $request->file('picture')->isValid()){
+
+            $requestImg = $request->picture;
+            $extension = $requestImg->extension();
+
+            $imgName = md5($requestImg->getClientOriginalName() . strtotime("now") . "." . $extension);
+
+            $requestImg->move(public_path('img/profilePic'), $imgName);
+            $data['picture'] = $imgName;
         }
 
-        $data['name'] = $request->name;
+        $data['name'] = Crypt::encryptString($request->name);
         $personal->update($data);
+
         return redirect()->route('personals.index')->with('success', true);
     }
 
@@ -119,7 +120,7 @@ class PersonalController extends Controller
      * @param  \App\Models\Personal  $personal
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Personal $personal)
+    public function destroy(User $personal)
     {
         $personal->delete();
         return redirect('/personal');
