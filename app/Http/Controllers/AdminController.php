@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AdminRequest;
 use App\Models\Admin;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Hash;
@@ -17,7 +18,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $admins = Admin::all();
+        $admins = User::all();
         return view('administrador.index', compact('admins'));
     }
 
@@ -28,7 +29,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        $admin = new Admin();
+        $admin = new User();
         return view('administrador.create', compact('admin'));
     }
 
@@ -40,12 +41,24 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        Admin::create([
-            'name' => Crypt::encryptString($request->name),
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        $admin = new User();
+        $admin->type = "0";
+        $admin->name = Crypt::encryptString($request->name);
+        $admin->email = $request->email;
+        $admin->password = Hash::make($request->password);
 
+        if($request->hasFile('picture') && $request->file('picture')->isValid()){
+
+            $requestImg = $request->picture;
+            $extension = $requestImg->extension();
+
+            $imgName = md5($requestImg->getClientOriginalName() . strtotime("now") . "." . $extension);
+
+            $requestImg->move(public_path('img/profilePic'), $imgName);
+            $admin->picture = $imgName;
+        }
+
+        $admin->save();
         return redirect()->route('admin.index')->with('success', true);
     }
 
@@ -55,7 +68,7 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Admin $admin)
+    public function show(User $admin)
     {
         $admin->name = $admin->getDecrypted($admin->name);
 
@@ -68,7 +81,7 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Admin $admin)
+    public function edit(User $admin)
     {
         $admin->name = $admin->getDecrypted($admin->name);
 
@@ -82,19 +95,21 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Admin $admin)
+    public function update(Request $request, User $admin)
     {
         $data = $request->all();
 
-        if ($request->hasfile('image')) {
-            $extesion = $request->image->getClientOriginalExtension();
-            $slug = str_slug($request->name);
-            $nameFile = "{$slug}.{$extesion}";
-            $request->image->storeAs('public/img', $nameFile);
-            $data['image'] = 'img/' . $nameFile;
-        } else {
-            unset($data['image']);
+        if($request->hasFile('picture') && $request->file('picture')->isValid()){
+
+            $requestImg = $request->picture;
+            $extension = $requestImg->extension();
+
+            $imgName = md5($requestImg->getClientOriginalName() . strtotime("now") . "." . $extension);
+
+            $requestImg->move(public_path('img/profilePic'), $imgName);
+            $data['picture'] = $imgName;
         }
+
         $data['name'] = Crypt::encryptString($request->name);
         $admin->update($data);
         return redirect()->route('admin.index')->with('success', true);
@@ -106,7 +121,7 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Admin $admin)
+    public function destroy(User $admin)
     {
         $admin->delete();
         return redirect('admin/');
