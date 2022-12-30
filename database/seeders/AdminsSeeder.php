@@ -21,6 +21,7 @@ class AdminsSeeder extends Seeder
             'email' => 'admin@mkacademy.com',
             'email_verified_at' => now(),
             'type' => "0",
+            'status' => "1",
             // deixei sem foto mesmo
             'password' => '$2y$10$D0ZhzhBF0pVZqSKxCIuGgum4iXHTdgnyQ.oShXfs31YwECSBuYH62', // password: 123456
             'remember_token' => Str::random(10),
@@ -30,6 +31,7 @@ class AdminsSeeder extends Seeder
             'email' => 'leopalds@mkacademy.com',
             'email_verified_at' => now(),
             'type' => "0",
+            'status' => "1",
             // deixei sem foto mesmo
             'password' => '$2y$10$D0ZhzhBF0pVZqSKxCIuGgum4iXHTdgnyQ.oShXfs31YwECSBuYH62', // password: 123456
             'remember_token' => Str::random(10),
@@ -39,6 +41,7 @@ class AdminsSeeder extends Seeder
             'email' => 'lanadosreis@mkacademy.com',
             'email_verified_at' => now(),
             'type' => "0",
+            'status' => "1",
             // deixei sem foto mesmo
             'password' => '$2y$10$D0ZhzhBF0pVZqSKxCIuGgum4iXHTdgnyQ.oShXfs31YwECSBuYH62', // password: 123456
             'remember_token' => Str::random(10),
@@ -48,6 +51,7 @@ class AdminsSeeder extends Seeder
             'email' => 'martinsk@mkacademy.com',
             'email_verified_at' => now(),
             'type' => "0",
+            'status' => "1",
             // deixei sem foto mesmo
             'password' => '$2y$10$D0ZhzhBF0pVZqSKxCIuGgum4iXHTdgnyQ.oShXfs31YwECSBuYH62', // password: 123456
             'remember_token' => Str::random(10),
@@ -57,6 +61,7 @@ class AdminsSeeder extends Seeder
             'email' => 'gusta@mkacademy.com',
             'email_verified_at' => now(),
             'type' => "0",
+            'status' => "1",
             'picture' => "0dd834eb4b88d49370ceba88eba214f2", // é o batma
             'password' => '$2y$10$D0ZhzhBF0pVZqSKxCIuGgum4iXHTdgnyQ.oShXfs31YwECSBuYH62', // password: 123456
             'remember_token' => Str::random(10),

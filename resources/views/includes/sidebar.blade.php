@@ -48,7 +48,7 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img style="height: 40px;width:40px" src="{{ asset("img/profilePic/" . $admin->picture ) }}" class="img-circle elevation-2"
+                <img style="height: 40px;width:40px" src="{{ asset("img/profilePic/" . Auth::user()->picture ) }}" class="img-circle elevation-2"
                     alt="User Image">
             </div>
             <div class="info text-white">

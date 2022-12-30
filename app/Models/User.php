@@ -29,7 +29,8 @@ class User extends Authenticatable
         'cpf',
         'number',
         'picture',
-        'type' // estou considerando type 0 para admin
+        'type', // 0 para admin, 1 para professor 2 para aluno
+        'status' // 0 para pendente e 1 para ativo 
     ];
 
     /**
