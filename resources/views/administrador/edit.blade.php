@@ -1,8 +1,8 @@
-@extends('adminlte::page')
+@extends('layouts.adminlte')
 
 @section('title', 'Mk Academy')
 
-@section('content_header')
+@section('header')
 @stop
 
 @section('content')
