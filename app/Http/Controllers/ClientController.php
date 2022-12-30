@@ -45,13 +45,23 @@ class ClientController extends Controller
     {
         $request->validated();
 
+        if($request->hasfile('image')){
+            $ext = $request->image->getClientOriginalExtension();
+            $slug = Str::slug($request->name, '-');
+            $name = "{$slug}.{$ext}";
+            $request->image->storeAs('public/img', $name);
+            $request->image = 'img/' . $name;
+        }else{
+            $request->image = 'profile_default.png';
+        }
+
         Client::create([
             'name' => Crypt::encryptString($request->name),
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'cpf' => Crypt::encryptString($request->cpf),
             'phone' => Crypt::encryptString($request->phone),
-            'image' => $request->image ?? 'profile_default.png', 
+            'image' => $request->image,
             'birth_date' => $request->birth_date,
             'registration_date' => $request->registration_date,
         ]);
@@ -137,7 +147,7 @@ class ClientController extends Controller
      */
     public function destroy(Client $client)
     {
-        File::delete('img/' . $client->image);
+        File::delete('storage/' . $client->image);
         $client->delete();
         return redirect()->route('clients.index')->with('success', true);
     }

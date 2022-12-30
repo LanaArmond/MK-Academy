@@ -6,7 +6,7 @@
     @slot('title', 'Cadastrar Aluno')
     @slot('url', route('clients.store'))
     @slot('form')
-        @include('client.form', ['create' => true])
+        @include('client.form', ['create' => true, 'show' => false])
     @endslot
 @endcomponent
 @endsection

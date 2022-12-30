@@ -6,7 +6,7 @@
     @slot('title', 'Editar Aluno')
     @slot('url', route('clients.update', $client->id))
     @slot('form')
-        @include('client.form', ['create' => true])
+        @include('client.form', ['create' => true, 'show' => true])
     @endslot
 
 @endcomponent
