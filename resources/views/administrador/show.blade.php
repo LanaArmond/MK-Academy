@@ -17,7 +17,7 @@
         <div class="card-body box-profile">
                 <div class="row">
                     <div class="text-center">
-                        <img class="profile-user-img img-fluid img-circle" style="height: 100px;width:100px" src="img/profilePic/{{ $admin->picture }}" alt="User profile picture">
+                        <img class="profile-user-img img-fluid img-circle" style="height: 100px;width:100px" src="{{ asset("img/profilePic/" . $admin->picture) }}" alt="User profile picture">
                     </div>
                 </div>
             <fieldset disabled>
