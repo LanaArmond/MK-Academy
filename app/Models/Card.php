@@ -5,17 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Exercise extends Model
+class Card extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
 
     /**
-     * The cards that belong to the exercise.
+     * The Exercises that belong to the card.
      */
-    public function cards()
+    public function exercises()
     {
-        return $this->belongsToMany(Card::class)->withTimestamps();
+        return $this->belongsToMany(Exercise::class)->withTimestamps();
     }
 }

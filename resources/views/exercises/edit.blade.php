@@ -8,6 +8,6 @@
     @slot('form')
         @include('exercises.form')
     @endslot
-
+    @dd( $exercise->cards )
 @endcomponent
 @endsection
