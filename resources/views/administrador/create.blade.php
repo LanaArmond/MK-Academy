@@ -1,4 +1,4 @@
-@extends('adminlte::page')
+@extends('layouts.adminlte')
 
 @section('title', 'Mk Academy')
 
@@ -11,7 +11,7 @@
                     
     <div class="col-md-10 offset-md-1 col-12">
         <div class="card card-outline">
-            <div class="card-header">
+            <div class="card-header card-outline card-danger">
                 <h5>Cadastrando novo Administrador</h5>
             </div>
     <div class="card-body">
@@ -48,7 +48,7 @@
         </div>
         <div class="form-group col-sm-6">  
             <label for="picture">Imagem </label>
-            <input type="file" accept="image/*" class="form-control-file" name="image">
+            <input type="file" accept="image/*" class="form-control-file" id="picture" name="picture">
         </div>
         <div class="card-footer d-flex justify-content-end">
             <a type="button" href="{{ route('admin.index') }}" class="btn btn-danger mr-3 float-right">Cancelar</a>
@@ -61,10 +61,3 @@
     </div>
 @stop
  
-@section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
-@stop
-
-@section('js')
-    <script> console.log('Hi!'); </script>
-@stop

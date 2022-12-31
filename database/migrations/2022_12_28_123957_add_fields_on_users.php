@@ -17,8 +17,6 @@ return new class extends Migration
             $table->string('cpf')->nullable();
             $table->string('number')->nullable();
             $table->string('birth_date')->nullable();
-            // $table->string('cpf')->nullable();
-
         });
     }
 

@@ -1,8 +1,8 @@
-@extends('adminlte::page')
+@extends('layouts.adminlte')
 
 @section('title', 'Mk Academy')
 
-@section('content_header')
+@section('header')
 @stop
 
 @section('content')
@@ -11,7 +11,7 @@
                     
     <div class="col-md-10 offset-md-1 col-12">
         <div class="card card-outline">
-            <div class="card-header">
+            <div class="card-header card-outline card-danger">
                 <h5>Editando {{ $admin->name }}</h5>
             </div>
     <div class="card-body">
@@ -43,10 +43,3 @@
     </div>
 @stop
  
-@section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
-@stop
-
-@section('js')
-    <script> console.log('Hi!'); </script>
-@stop

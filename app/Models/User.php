@@ -26,6 +26,11 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'cpf',
+        'number',
+        'picture',
+        'type', // 0 para admin, 1 para professor 2 para aluno
+        'status' // 0 para pendente e 1 para ativo 
     ];
 
     /**

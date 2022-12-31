@@ -10,7 +10,7 @@
           <x-dropdown align="right" width="48">
               <x-slot name="trigger">
                   <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                      <div>{{ Auth::user()->name }}</div>
+                      <div>{{ Auth::user()->getDecrypted(Auth::user()->name) }}</div>
 
                       <div class="ml-1">
                           <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -41,22 +41,18 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-        <img src="{{ asset('img/MediumLogo.png') }}" alt="Mk Academy Logo" class="" style="opacity: .8">
-    </a>
+    <img src="{{ asset('img/MediumLogo.png') }}" alt="Mk Academy Logo" class="" style="opacity: .8">
 
     <!-- Sidebar -->
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="{{ asset('vendor/adminlte/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2"
+                <img style="height: 40px;width:40px" src="{{ asset("img/profilePic/" . Auth::user()->picture ) }}" class="img-circle elevation-2"
                     alt="User Image">
             </div>
-            <div class="info">
-                <a href="#" class="d-block">
-                    {{ auth()->user()->name }}
-                </a>
+            <div class="info text-white">
+                {{ Auth::user()->getDecrypted(Auth::user()->name) }}
             </div>
         </div>
 
@@ -110,6 +106,25 @@
                       <p> Exercícios </p>
                   </a>
               </li>
+
+
+              <li class="nav-item">
+                <a class="nav-link  {{ Route::is('alunosPendentes.index') ? 'active' : '' }}"
+                href="{{route('alunosPendentes.index')}}"
+                >
+                    <i class="fas fa-fw far fa-chalkboard-teacher "></i>
+                    <p> Alunos Pendentes </p>
+                </a>
+            </li>
+
+              <li class="nav-item">
+                <a class="nav-link  {{ Route::is('professoresPendentes.index') ? 'active' : '' }}"
+                href="{{route('professoresPendentes.index')}}"
+                >
+                    <i class="fas fa-fw far fa-chalkboard-teacher "></i>
+                    <p> Professores Pendentes </p>
+                </a>
+            </li>
                 
             </ul>
         </nav>
