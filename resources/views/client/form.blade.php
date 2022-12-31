@@ -5,8 +5,8 @@
     </div>
 
     <div class="form-group col-sm-6 mt-2">
-        <label for="phone" class="required">Celular</label>
-        <input type="phone" name="phone" id="phone" class="form-control" required  value="{{ old('phone', $client->phone )}}">
+        <label for="number" class="required">Celular</label>
+        <input type="phone" name="number" id="number" class="form-control" required  value="{{ old('number', $client->number )}}">
     </div>
 
     <div class="form-group col-sm-6 mt-2">
@@ -50,7 +50,7 @@
     <div class="form-group col-sm-6 mt-2">
         <label for="image" class="required">imagem</label>
         @if($show)
-            <img src="{{ asset('storage/'.$client->image) }}" alt="Imagem do cliente" class="img-thumbnail">
+            <img src="{{ asset("img/profilePic/" . $client->picture ) }}" alt="Imagem do cliente" class="img-thumbnail">
         @endif
 
         @if($create)
@@ -90,7 +90,7 @@
 
         //MASCARA DE TELEFONE
         $(document).ready(function(){
-            $('#phone').mask('(00) 00000-0000');
+            $('#number').mask('(00) 00000-0000');
         });
     </script>
 @endpush

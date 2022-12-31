@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Crypt;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable
 {
@@ -29,6 +30,8 @@ class User extends Authenticatable
         'cpf',
         'number',
         'picture',
+        'birth_date',
+        'registration_date',
         'type', // 0 para admin, 1 para professor 2 para aluno
         'status' // 0 para pendente e 1 para ativo 
     ];
