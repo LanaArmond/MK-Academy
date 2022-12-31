@@ -22,6 +22,9 @@
             @if($button ?? true)
                 <button type="submit" form="form-adicionar" class="btn btn-dark float-right">{{$button_name ?? 'Cadastrar'}}</button>
             @endif
+
+            {{$voltar ?? null}}
+            
         </div>
     </div>
 </div>

@@ -12,7 +12,7 @@
     <div class="form-group col-sm-6 mt-2">
         <label for="image" class="required">imagem</label>
         @if(!$create)
-            <img src="{{ asset('storage/' . $equipament->image) }}" alt="Imagem do equipamento" class="img-thumbnail">
+            <img src="{{ asset($equipament->getImageUrlAttribute()) }}" alt="Imagem do equipamento" class="img-thumbnail">
         @endif
         <input type="file" accept="image/*" class="form-control-file" name="image">
     </div>

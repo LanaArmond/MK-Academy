@@ -43,12 +43,13 @@ class EquipamentController extends Controller
     {
         $data = $request->validated();
 
-        if($request->hasfile('image')){
+        if($request->hasfile('image') && $request->image->isValid()){
+
             $ext = $request->image->getClientOriginalExtension();
-            $slug = Str::slug($request->name);
-            $name = "{$slug}.{$ext}";
-            $request->image->storeAs('public/img', $name);
-            $data['image'] = 'img/' . $name;
+            $name = md5($request->name . strtotime("now")) . ".{$ext}";
+
+            $request->image->move('storage/img/equipaments/', $name);
+            $data['image'] = $name;
         }else{
             $data['image'] = 'default.jpg';
         }
@@ -92,12 +93,16 @@ class EquipamentController extends Controller
     {
         $data = $request->validated();
 
-        if($request->hasfile('image')){
+        if($request->hasfile('image') && $request->image->isValid()){
+
+            $equipament->deleteImage();
+
             $ext = $request->image->getClientOriginalExtension();
-            $slug = Str::slug($request->name);
-            $name = "{$slug}.{$ext}";
-            $request->image->storeAs('public/img', $name);
-            $data['image'] = 'img/' . $name;
+            $name = md5($request->name . strtotime("now")) . ".{$ext}";
+
+            $request->image->move('storage/img/equipaments/', $name);
+            $data['image'] = $name;
+
         }else{
             $data['image'] = 'default.jpg';
         }
@@ -116,7 +121,7 @@ class EquipamentController extends Controller
      */
     public function destroy(Equipament $equipament)
     {
-        Storage::delete('public/' . $equipament->image);
+        $equipament->deleteImage();
         $equipament->delete();
         return redirect()->route('equipaments.index')->with('success', true);
     }
