@@ -106,6 +106,25 @@
                       <p> Exercícios </p>
                   </a>
               </li>
+
+
+              <li class="nav-item">
+                <a class="nav-link  {{ Route::is('alunosPendentes.index') ? 'active' : '' }}"
+                href="{{route('alunosPendentes.index')}}"
+                >
+                    <i class="fas fa-fw far fa-chalkboard-teacher "></i>
+                    <p> Alunos Pendentes </p>
+                </a>
+            </li>
+
+              <li class="nav-item">
+                <a class="nav-link  {{ Route::is('professoresPendentes.index') ? 'active' : '' }}"
+                href="{{route('professoresPendentes.index')}}"
+                >
+                    <i class="fas fa-fw far fa-chalkboard-teacher "></i>
+                    <p> Professores Pendentes </p>
+                </a>
+            </li>
                 
             </ul>
         </nav>

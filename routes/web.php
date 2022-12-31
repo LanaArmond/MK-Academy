@@ -2,10 +2,13 @@
 
 use App\Http\Controllers\ExerciseController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PendentesController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Admin;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
+use App\Models\User;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +44,16 @@ Route::middleware('auth', 'pendent')->group(function () {
     Route::post('/admin/{admin}/update/', [AdminController::class, 'update'])->name('admin.update');
     Route::delete('/admin/{admin}/destroy', [AdminController::class, 'destroy'])->name('admin.destroy');
     Route::get('/admin/{admin}/show', [AdminController::class, 'show'])->name('admin.show');
+
+    // Rotas de pendentes
+
+    Route::get('/alunos/pendentes', [PendentesController::class, 'alunos'])->name('alunosPendentes.index');
+    Route::get('/professores/pendentes', [PendentesController::class, 'professores'])->name('professoresPendentes.index');
+    Route::post('/confirma/pendente/{aluno}', [PendentesController::class, 'confirmaAluno'])->name('confirmaAluno.pendente');
+    Route::post('/confirma/pendente/{professor}', [PendentesController::class, 'confirmaProfessor'])->name('confirmaProfessor.pendente');
+    Route::delete('/recusa/pendente/{aluno}', [PendentesController::class, 'recusaAluno'])->name('recusaAluno');
+    Route::delete('/recusa/pendente/{professor}', [PendentesController::class, 'recusaProfessor'])->name('recusaProfessor');
+
 });
 Route::get('/registroAluno', [RegisterController::class, 'registraAlunoIndex'])->name('registraAluno.index');
 Route::post('/registro/aluno', [RegisterController::class, 'registraAluno'])->name('registra.aluno');
