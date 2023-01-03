@@ -24,4 +24,9 @@ class Equipament extends Model
         return Storage::url('img/equipaments/' . $this->image);
     }
 
+    public function exercise()
+    {
+        return $this->belongsTo(Exercise::class);
+    }
+
 }
