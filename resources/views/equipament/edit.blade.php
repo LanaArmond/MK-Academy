@@ -8,8 +8,8 @@
     @slot('form')
         @include('equipament.form', ['create' => false])
     @endslot
-    @slot('voltar')
-        <a href="{{ route('equipaments.index') }}" class="btn btn-danger float-right mr-2">Voltar</a>
+    @slot('footer')
+        <a href="{{ route('equipaments.index') }}" class="btn btn-danger float-right mr-3">Voltar</a>
     @endslot
 @endcomponent
 @endsection
