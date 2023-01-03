@@ -17,7 +17,7 @@
                 <div class="card card-outline">
                     <div class="card-body box-profile">
                         <div class="text-center">
-                            <img class="profile-user-img img-fluid img-circle" style="height: 100px;width:100px" src="{{ asset('storage/' . $client->image ) }}" alt="User profile picture">
+                            <img class="profile-user-img img-fluid img-circle" style="height: 100px;width:100px" src="{{ asset("img/profilePic/" . $client->picture ) }}" alt="User profile picture">
                         </div>
                         <br>
                         <h3 class="profile-username text-center">{{ $client->getDecrypted($client->name)}}</h3>

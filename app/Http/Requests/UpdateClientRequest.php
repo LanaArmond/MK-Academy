@@ -25,11 +25,11 @@ class UpdateClientRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'email' =>'required|string',
+            'email' =>'required|string|unique:users,email,'. $this->user()->id,
             'cpf' =>'required|string',
             'password' =>'nullable|string|min:6|confirmed',
             'confirm_password' =>'nullable|string|min:6',
-            'phone' => 'required|string',
+            'number' => 'required|string',
             'birth_date' => 'required|date',
             'registration_date' => 'required|date',
         ];

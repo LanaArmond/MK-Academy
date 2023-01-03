@@ -25,10 +25,10 @@ class StoreClientRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'email' =>'required|string',
+            'email' =>'required|string|unique:users,email',
             'cpf' =>'required|string',
             'password' =>'required|string|min:6|confirmed',
-            'phone' => 'required|string',
+            'number' => 'required|string',
             'birth_date' => 'required|date',
             'registration_date' => 'required|date',
         ];

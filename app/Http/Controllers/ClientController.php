@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Client;
+use App\Models\User;
 use App\Http\Requests\StoreClientRequest;
 use App\Http\Requests\UpdateClientRequest;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
+use Psy\Readline\Userland;
 
 class ClientController extends Controller
 {
@@ -20,7 +21,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $clients = Client::all();
+        $clients = User::where('type', "2")->get();
         return view('client.index', compact('clients'));
     }
 
@@ -31,7 +32,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        $client = new Client();
+        $client = new User();
         return view('client.create', compact('client'));
     }
 
@@ -44,17 +45,30 @@ class ClientController extends Controller
     public function store(StoreClientRequest $request)
     {
         $request->validated();
+        
+        $client = new User();
+        $client->name = Crypt::encryptString($request->name);
+        $client->email = $request->email;
+        $client->password = Hash::make($request->password);
+        $client->cpf = Crypt::encryptString($request->cpf);
+        $client->number = Crypt::encryptString($request->number);
+        $client->birth_date = $request->birth_date;
+        $client->registration_date = $request->registration_date;
+        $client->type = "2";
+        $client->status = "1";
 
-        Client::create([
-            'name' => Crypt::encryptString($request->name),
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'cpf' => Crypt::encryptString($request->cpf),
-            'phone' => Crypt::encryptString($request->phone),
-            'image' => $request->image ?? 'profile_default.png', 
-            'birth_date' => $request->birth_date,
-            'registration_date' => $request->registration_date,
-        ]);
+        if($request->hasFile('image') && $request->file('image')->isValid()){
+
+            $requestImg = $request->image;
+            $extension = $requestImg->extension();
+
+            $imgName = md5($requestImg->getClientOriginalName() . strtotime("now") . "." . $extension);
+
+            $requestImg->move(public_path('img/profilePic'), $imgName);
+            $client->picture = $imgName;
+        }
+
+        $client->save();
 
         return redirect()->route('clients.index')->with('success', true);
     }
@@ -65,11 +79,12 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Client $client)
+    public function show(User $client)
     {
+        
         $client->name = $client->getDecrypted($client->name);
         $client->cpf = $client->getDecrypted($client->cpf);
-        $client->phone = $client->getDecrypted($client->phone);
+        $client->number = $client->getDecrypted($client->number);
 
         return view('client.show', compact('client'));
     }
@@ -80,11 +95,11 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Client $client)
+    public function edit(User $client)
     {
         $client->name = $client->getDecrypted($client->name);
         $client->cpf = $client->getDecrypted($client->cpf);
-        $client->phone = $client->getDecrypted($client->phone);
+        $client->number = $client->getDecrypted($client->number);
 
         return view('client.edit', compact('client'));
     }
@@ -96,26 +111,25 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateClientRequest $request, Client $client)
+    public function update(UpdateClientRequest $request, User $client)
     {
         $data = $request->validated();
         unset($data['password_confirmation']);
 
-        if($request->hasfile('image')){
-            $ext = $request->image->getClientOriginalExtension();
-            $slug = Str::slug($request->name, '-');
-            $name = "{$slug}.{$ext}";
-            $request->image->storeAs('public/img', $name);
-            $data['image'] = 'img/' . $name;
-        }else{
-            unset($data['image']);
+        if($request->hasFile('image') && $request->file('image')->isValid()){
+
+            $requestImg = $request->image;
+            $extension = $requestImg->extension();
+
+            $imgName = md5($requestImg->getClientOriginalName() . strtotime("now") . "." . $extension);
+
+            $requestImg->move(public_path('img/profilePic'), $imgName);
+            $data['picture'] = $imgName;
         }
-
-
 
         $data['name'] = Crypt::encryptString($request->name);
         $data['cpf'] = Crypt::encryptString($request->cpf);
-        $data['phone'] = Crypt::encryptString($request->phone);
+        $data['number'] = Crypt::encryptString($request->number);
 
         if(!$request->password){
             unset($data['password']);
@@ -135,9 +149,8 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Client $client)
+    public function destroy(User $client)
     {
-        File::delete('img/' . $client->image);
         $client->delete();
         return redirect()->route('clients.index')->with('success', true);
     }
