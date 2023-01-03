@@ -6,8 +6,8 @@
             @include('client.form', ['create'=> false, 'show'=> true])
         @endslot
         @slot('back')
-            <a href="{{ route('clients.edit', $client->id) }}" class="btn btn-primary float-right ml-1"><i class="fas fa-pen"></i> Editar</a>
-            <a href="{{ route('clients.index') }}" class="btn btn-dark float-right"><i class="fas fa-undo-alt"></i> Voltar</a>
+            <a href="{{ route('clients.edit', $client->id) }}" class="btn btn-success float-right"><i class="fas fa-pen"></i> Editar</a>
+            <a href="{{ route('clients.index') }}" class="btn btn-danger float-right mr-3"><i class="fas fa-undo-alt"></i> Cancelar</a>
         @endslot
     @endcomponent    
 @endsection
