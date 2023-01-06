@@ -109,7 +109,16 @@
                       <i class="fas fa-fw fal fa-solid fa-person-running"></i>
                       <p> Exercícios </p>
                   </a>
-              </li>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link  {{ Route::is('cards.index') ? 'active' : '' }}"
+                    href="{{route('cards.index')}}"
+                    >
+                        <i class="fas fa-fw fal fa-solid fa-th-list"></i>
+                        <p> Fichas </p>
+                    </a>
+                </li>
 
             </ul>
         </nav>

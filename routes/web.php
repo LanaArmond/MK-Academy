@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ExerciseController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PersonalController;
+use App\Http\Controllers\CardController;
 use App\Models\Admin;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
@@ -52,5 +53,12 @@ Route::put('/personal/{personal}/update/', [PersonalController::class, 'update']
 Route::delete('/personal/{personal}/destroy', [PersonalController::class, 'destroy'])->name('personals.destroy');
 Route::get('/personal/{personal}/show', [PersonalController::class, 'show'])->name('personals.show');
 
+Route::get('/card', [CardController::class, 'index'])->name('cards.index');
+Route::get('/card/create', [CardController::class, 'create'])->name('cards.create');
+Route::post('/card/store', [CardController::class, 'store'])->name('cards.store');
+Route::get('/card/{card}/edit', [CardController::class, 'edit'])->name('cards.edit');
+Route::put('/card/{card}/update/', [CardController::class, 'update'])->name('cards.update');
+Route::delete('/card/{card}/destroy', [CardController::class, 'destroy'])->name('cards.destroy');
+Route::get('/card/{card}/show', [CardController::class, 'show'])->name('cards.show');
 
 require __DIR__.'/auth.php';
