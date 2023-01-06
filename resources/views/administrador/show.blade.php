@@ -1,4 +1,4 @@
-@extends('adminlte::page')
+@extends('layouts.adminlte')
 
 @section('title', 'Mk Academy')
 
@@ -11,15 +11,13 @@
                     
     <div class="col-md-10 offset-md-1 col-12">
         <div class="card card-outline">
-            <div class="card-header">
+            <div class="card-header card-outline card-danger">
                 <h5>Visualizando {{ $admin->name }}</h5>
             </div>
         <div class="card-body box-profile">
-                <div class="row">
                     <div class="text-center">
-                        <img class="profile-user-img img-fluid img-circle" style="height: 100px;width:100px" src="img/profilePic/{{ $admin->picture }}" alt="User profile picture">
+                        <img class="profile-user-img img-fluid img-circle" style="height: 200px;width:200px" src="{{ asset("img/profilePic/" . $admin->picture) }}" alt="User profile picture">
                     </div>
-                </div>
             <fieldset disabled>
                 <div class="row">
                     <div class="form-group col-sm-12 col-md-6">
