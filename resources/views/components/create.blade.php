@@ -1,5 +1,5 @@
 <div class="col-md-10 offset-md-1 col-12">
-    <div class="card card-outline card-primary">
+    <div class="card card-outline card-danger">
         <div class="card-header">
             <h3 class="card-title title-form">{{ $title ?? null }} </h3>
         </div>
@@ -20,8 +20,12 @@
         </div>
         <div class="card-footer">
             @if($button ?? true)
-                <button type="submit" form="form-adicionar" class="btn btn-dark float-right">{{$button_name ?? 'Cadastrar'}}</button>
+                <button type="submit" form="form-adicionar" class="btn btn-success float-right">{{$button_name ?? 'Cadastrar'}}</button>
             @endif
+
+            {{$voltar ?? null}}
+            
+            {{ $footer ?? null}}
         </div>
     </div>
 </div>

@@ -43,6 +43,7 @@ class AdminController extends Controller
     {
         $admin = new User();
         $admin->type = "0";
+        $admin->status = "1";
         $admin->name = Crypt::encryptString($request->name);
         $admin->email = $request->email;
         $admin->password = Hash::make($request->password);
@@ -123,6 +124,7 @@ class AdminController extends Controller
      */
     public function destroy(User $admin)
     {
+        dd($admin);
         $admin->delete();
         return redirect('admin/');
     }

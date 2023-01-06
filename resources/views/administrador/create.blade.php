@@ -1,4 +1,4 @@
-@extends('adminlte::page')
+@extends('layouts.adminlte')
 
 @section('title', 'Mk Academy')
 
@@ -11,7 +11,7 @@
 
     <div class="col-md-10 offset-md-1 col-12">
         <div class="card card-outline">
-            <div class="card-header">
+            <div class="card-header card-outline card-danger">
                 <h5>Cadastrando novo Administrador</h5>
             </div>
     <div class="card-body">

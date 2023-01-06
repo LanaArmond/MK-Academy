@@ -7,7 +7,7 @@
                     <div class="float-right mr-2">
                         <div class="input-group input-group-sm">
                             <a href="{{ $create }}">
-                                <button type="button" class="btn btn-primary button-create">
+                                <button type="button" class="btn btn-dark button-create">
                                     <b><i class="fas fa-plus-circle"></i> Adicionar</b>
                                 </button>
                             </a>
@@ -34,5 +34,10 @@
     <div class="text-center" style="color: #949699">
         <i class="fas fa-exclamation-circle" style="font-size: 10em"></i>
         <p class="mb-4 h2">Nenhum item encontrado!</p>
+        <a href="{{ $create }}">
+            <button type="button" class="btn btn-dark button-create mb-4">
+                <b><i class="fas fa-plus-circle"></i> Adicionar</b>
+            </button>
+        </a>
     </div>
 @endif
