@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Exercise;
 use App\Http\Requests\StoreExerciseRequest;
 use App\Http\Requests\UpdateExerciseRequest;
-use App\Models\Equipment;
+use App\Models\Equipament;
 
 class ExerciseController extends Controller
 {
@@ -28,9 +28,9 @@ class ExerciseController extends Controller
      */
     public function create()
     {
-        $equipments = Equipment::all();
+        $equipaments = Equipament::all();
         $exercise = new Exercise();
-        return view('exercises.create', compact('exercise','equipments'));
+        return view('exercises.create', compact('exercise','equipaments'));
     }
 
     /**
@@ -56,9 +56,9 @@ class ExerciseController extends Controller
      */
     public function show(Exercise $exercise)
     {
-        $equipments = Equipment::all();
+        $equipaments = Equipament::all();
 
-        return view('exercises.show', compact('exercise', 'equipments'));
+        return view('exercises.show', compact('exercise', 'equipaments'));
     }
 
     /**
@@ -69,9 +69,9 @@ class ExerciseController extends Controller
      */
     public function edit(Exercise $exercise)
     {
-        $equipments = Equipment::all();
+        $equipaments = Equipament::all();
 
-        return view('exercises.edit', compact('exercise', 'equipments'));
+        return view('exercises.edit', compact('exercise', 'equipaments'));
     }
 
     /**

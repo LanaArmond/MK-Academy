@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('personals', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->text('name');
             $table->string('email');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

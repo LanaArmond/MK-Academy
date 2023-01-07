@@ -2,11 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Equipment;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Personal;
 use Illuminate\Database\Seeder;
 
-class EquipmentSeeder extends Seeder
+class PersonalSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +14,6 @@ class EquipmentSeeder extends Seeder
      */
     public function run()
     {
-        Equipment::factory()->count(4)->create();
+        Personal::factory()->count(10)->create();
     }
 }

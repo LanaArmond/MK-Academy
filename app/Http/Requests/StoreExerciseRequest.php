@@ -29,7 +29,7 @@ class StoreExerciseRequest extends FormRequest
             'seriesNumber' =>'required|integer',
             'repetitionNumber' =>'required|integer',
             'tutorialVideo' =>'required|url',
-            'equipment_id' =>'required|integer|exists:equipments,id',
+            'equipament_id' =>'required|integer|exists:equipaments,id',
         ];
     }
 
@@ -46,7 +46,7 @@ class StoreExerciseRequest extends FormRequest
             'seriesNumber' => 'Número de Séries',
             'repetitionNumber' => 'Número de Repetições',
             'tutorialVideo' => 'Vídeo Tutorial',
-            'equipment_id' => 'Equipamento'
+            'equipament_id' => 'Equipamento'
         ];
     }
 
@@ -62,7 +62,7 @@ class StoreExerciseRequest extends FormRequest
             'string' => 'O campo :attribute deve ser do tipo texto',
             'integer' => 'O campo :attribute deve ser um número inteiro',
             'url' => 'O campo :attribute deve ser um URL',
-            'exists' => 'O campo :attribute deve estar na tabela de :table'
+            'exists' => 'O campo :attribute deve estar na tabela de Equipamentos'
         ];
     }
 }

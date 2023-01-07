@@ -29,7 +29,7 @@ class UpdateExerciseRequest extends FormRequest
             'seriesNumber' =>'required|integer',
             'repetitionNumber' =>'required|integer',
             'tutorialVideo' =>'required|url',
-            'equipment_id' =>'required|integer|exists:equipments,id',
+            'equipament_id' =>'required|integer|exists:equipaments,id',
         ];
     }
 
@@ -46,7 +46,7 @@ class UpdateExerciseRequest extends FormRequest
             'seriesNumber' => 'Número de Séries',
             'repetitionNumber' => 'Número de Repetições',
             'tutorialVideo' => 'Vídeo Tutorial',
-            'equipment_id' => 'Equipamento'
+            'equipament_id' => 'Equipamento'
         ];
     }
 

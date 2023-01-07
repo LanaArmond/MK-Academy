@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\Equipment;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -25,9 +24,11 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             AdminsSeeder::class,
+            PersonalSeeder::class,
+            ClientSeeder::class,
             ExerciseSeeder::class,
-            // PersonalSeeder::class
         ]);
-        $this->call(EquipmentSeeder::class);
+
+        $this->call(CardSeeder::class);
     }
 }

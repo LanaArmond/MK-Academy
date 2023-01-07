@@ -21,11 +21,12 @@
     </div>
     
     <div class="form-group col-sm-6">
-        <label for="equipment_id" class="required">Equipamento</label>
-        <select name="equipment_id" id="equipment_id" value="{{old('equipment_id', $exercise->equipment)}}" class="form-control" required>
-            @foreach( $equipments as $equipment)
-                <option {{ $equipment->id == $exercise->equipment->id ? 'selected' : ''}} value="{{ $equipment->id }}">
-                    {{ $equipment->name }}
+        <label for="equipament_id" class="required">Equipamento</label>
+        <select name="equipament_id" id="equipament_id" value="{{old('equipament_id', $exercise->equipament)}}" class="form-control" required>
+            <option value="">Selecione Um Equipamento</option>
+            @foreach( $equipaments as $equipament)
+                <option {{ isset($exercise->equipament) && $equipament->id == $exercise->equipament->id ?? null ? 'selected' : ''}} value="{{ $equipament->id }}">
+                    {{ $equipament->name }}
                 </option>
             @endforeach
         </select>

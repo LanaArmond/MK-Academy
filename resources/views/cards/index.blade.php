@@ -18,8 +18,8 @@
                             {{-- @can('view', $card) --}}
                             <tr>
                                 <td>{{ $card->identifier }}</td>
-                                <td>{{ $card->personal->name }}</td>
-                                <td>{{ $card->client->name }}</td>
+                                <td>{{ $card->personal->name ?? null }}</td>
+                                <td>{{ $card->client->name ?? null }}</td>
                                 <td class="options d-flex justify-content-end">
 
                                     {{-- @can('update', $card) --}}

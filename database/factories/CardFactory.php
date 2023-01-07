@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Client;
+use App\Models\Personal;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -9,6 +11,16 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class CardFactory extends Factory
 {
+    public static function random_identifier()
+    {
+        $identifiers = ['A', 'B', 'C', 'D', 'E', 'F'];
+
+
+        $random_int = rand(0, count($identifiers)-1);
+
+        return $identifiers[$random_int];
+    }
+
     /**
      * Define the model's default state.
      *
@@ -17,7 +29,7 @@ class CardFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'identifier' => CardFactory::random_identifier()
         ];
     }
 }

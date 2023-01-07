@@ -22,10 +22,10 @@ class Exercise extends Model
     }
 
     /**
-     * Get the Equipment that owns the Exercise.
+     * Get the equipament that owns the Exercise.
      */
-    public function equipment()
+    public function equipament()
     {
-        return $this->belongsTo(Equipment::class);
+        return $this->belongsTo(Equipament::class);
     }
 }
