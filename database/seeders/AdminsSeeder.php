@@ -17,7 +17,7 @@ class AdminsSeeder extends Seeder
     {
     
         User::create([
-            'name' => Crypt::encryptString('Admin'),
+            'name' => 'Admin',
             'email' => 'admin@mkacademy.com',
             'email_verified_at' => now(),
             'type' => "0",
@@ -27,7 +27,7 @@ class AdminsSeeder extends Seeder
             'remember_token' => Str::random(10),
         ]);
         User::create([
-            'name' => Crypt::encryptString('Poldin'),
+            'name' => 'Poldin',
             'email' => 'leopalds@mkacademy.com',
             'email_verified_at' => now(),
             'type' => "0",
@@ -37,7 +37,7 @@ class AdminsSeeder extends Seeder
             'remember_token' => Str::random(10),
         ]);
         User::create([
-            'name' => Crypt::encryptString('Laninha'),
+            'name' => 'Laninha',
             'email' => 'lanadosreis@mkacademy.com',
             'email_verified_at' => now(),
             'type' => "0",
@@ -47,7 +47,7 @@ class AdminsSeeder extends Seeder
             'remember_token' => Str::random(10),
         ]);
         User::create([
-            'name' => Crypt::encryptString('Kayanzada'),
+            'name' => 'Kayanzada',
             'email' => 'martinsk@mkacademy.com',
             'email_verified_at' => now(),
             'type' => "0",
@@ -57,7 +57,7 @@ class AdminsSeeder extends Seeder
             'remember_token' => Str::random(10),
         ]);
         User::create([
-            'name' => Crypt::encryptString('gustavara'),
+            'name' => 'gustavara',
             'email' => 'gusta@mkacademy.com',
             'email_verified_at' => now(),
             'type' => "0",

@@ -10,6 +10,8 @@ class Admin extends Model
 {
     use HasFactory;
 
+    protected $table = 'users';
+
     public function getDecrypted($value){
         return Crypt::decryptString($value);
     }
@@ -20,4 +22,17 @@ class Admin extends Model
         'password',
         'picture'
     ];
+    
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = Crypt::encrypt($value);
+    }
+
+    public function getNameAttribute($value)
+    {
+        if (is_null($value)) {
+            return $value;
+        }
+        return Crypt::decrypt($value);
+    }
 }

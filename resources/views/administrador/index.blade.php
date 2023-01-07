@@ -14,8 +14,8 @@
 
     <div class="row">
         @foreach ($admins as $admin)
-            
-      
+
+
             <div class="col-md-3 mt-2">
                 <div class="card card-outline">
                     <div class="card-body box-profile">
@@ -23,7 +23,7 @@
                             <img class="profile-user-img img-fluid img-circle" style="height: 100px;width:100px" src="{{ asset("img/profilePic/" . $admin->picture ) }}" alt="User profile picture">
                         </div>
                         <br>
-                        <h3 class="profile-username text-center">{{ $admin->getDecrypted($admin->name)}}</h3>
+                        <h3 class="profile-username text-center">{{ $admin->name}}</h3>
                         <div class="options text-center d-flex mt-2 justify-content-center">
                             {{-- @can('view', $admin) --}}
                             <a href="{{ route('admin.show', $admin->id) }}" class="btn btn-dark mr-2"><i class="fas fa-eye"></i></a>
@@ -45,7 +45,7 @@
         @endforeach
     </div>
 @stop
- 
+
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
 @stop

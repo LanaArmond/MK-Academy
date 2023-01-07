@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateClientRequest extends FormRequest
 {
@@ -25,7 +26,11 @@ class UpdateClientRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'email' =>'required|string|unique:users,email,'. $this->user()->id,
+            'email' =>[
+                'required','email',
+                Rule::unique('users')->ignore($this->client->id),
+
+            ],
             'cpf' =>'required|string',
             'password' =>'nullable|string|min:6|confirmed',
             'confirm_password' =>'nullable|string|min:6',
