@@ -52,7 +52,7 @@ class PersonalController extends Controller
         }
 
         User::create([
-            'name' => Crypt::encryptString($request->name),
+            'name' => $request->name,
             'type' => "1",
             'email' => $request->email,
             'password' => Hash::make($request->password),
@@ -106,7 +106,7 @@ class PersonalController extends Controller
             $data['picture'] = $imgName;
         }
 
-        $data['name'] = Crypt::encryptString($request->name);
+        $data['name'] = $request->name;
         $personal->update($data);
 
         return redirect()->route('personals.index')->with('success', true);

@@ -44,11 +44,13 @@ class CardController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCardRequest $request)
     {
         $data = $request->validated();
-
+        $exercise_id = $data['exercise_id'];
+        unset($data['exercise_id']);
         $card = Card::create($data);
+        $card->exercises()->sync($exercise_id);
 
         return redirect()->route('cards.index')->with('success', true);
     }
@@ -88,10 +90,13 @@ class CardController extends Controller
      * @param  \App\Models\Card  $card
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Card $card)
+    public function update(UpdateCardRequest $request, Card $card)
     {
         $data = $request->validated();
+        $exercise_id = $data['exercise_id'];
+        unset($data['exercise_id']);
         $card->update($data);
+        $card->exercises()->sync($exercise_id);
 
         return redirect()->route('cards.index')->with('success', true);
     }

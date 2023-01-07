@@ -6,6 +6,7 @@
 @endsection
 
 @section('content')
+    @include('includes.success')
     <div class="py-2 d-flex justify-content-end">
         <a type="button" class="mx-2 btn btn-dark" href="{{ route('personals.create') }}">Adicionar Novo</a>
     </div>
@@ -37,10 +38,9 @@
 @endsection
 
 @push('scripts')
-    {{-- Coloque os Scripts aqui --}}
+    <script src="{{ asset('js/components/sweetAlert.js') }}"></script>
 @endpush
 
 @push('styles')
-    <script src="{{ asset('js/components/dataTable.js') }}"></script>
-    <script src="{{ asset('js/components/sweetAlert.js') }}"></script>
+
 @endpush

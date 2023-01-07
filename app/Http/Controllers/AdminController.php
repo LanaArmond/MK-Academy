@@ -44,7 +44,7 @@ class AdminController extends Controller
         $admin = new User();
         $admin->type = "0";
         $admin->status = "1";
-        $admin->name = Crypt::encryptString($request->name);
+        $admin->name = $request->name;
         $admin->email = $request->email;
         $admin->password = Hash::make($request->password);
 
@@ -107,7 +107,7 @@ class AdminController extends Controller
             $data['picture'] = $imgName;
         }
 
-        $data['name'] = Crypt::encryptString($request->name);
+        $data['name'] = $request->name;
         $admin->update($data);
         return redirect()->route('admin.index')->with('success', true);
     }

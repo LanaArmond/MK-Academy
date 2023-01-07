@@ -8,36 +8,38 @@
                     @slot('create', route('cards.create'))
                     @slot('title', 'Fichas')
                     @slot('head')
-                        <th width="7%">Ficha</th>
-                        <th width="10%">Professor</th>
-                        <th width="16%"></th>
+                        <th width="20%">Ficha</th>
+                        <th width="20%">Professor</th>
+                        <th width="20%">Aluno</th>
+                        <th width="40%"></th>
                     @endslot
                     @slot('body')
                         @foreach ($cards as $card)
-                            @can('view', $card)
+                            {{-- @can('view', $card) --}}
                             <tr>
                                 <td>{{ $card->identifier }}</td>
                                 <td>{{ $card->personal->name }}</td>
-                                <td class="options">
+                                <td>{{ $card->client->name }}</td>
+                                <td class="options d-flex justify-content-end">
 
-                                    @can('update', $card)
-                                        <a href="{{ route('cards.edit', $card->id) }}" class="btn btn-sm btn-success"><i class="fas fa-pen"></i></a>
-                                    @endcan
+                                    {{-- @can('update', $card) --}}
+                                        <a href="{{ route('cards.edit', $card->id) }}" class="btn btn-sm btn-success mr-1"><i class="fas fa-pen"></i></a>
+                                    {{-- @endcan --}}
 
-                                    @can('view', $card)
-                                        <a href="{{ route('cards.show', $card->id) }}" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></a>
-                                    @endcan
+                                    {{-- @can('view', $card) --}}
+                                        <a href="{{ route('cards.show', $card->id) }}" class="btn btn-sm btn-primary mr-1"><i class="fas fa-eye"></i></a>
+                                    {{-- @endcan --}}
 
-                                    @can('delete', $card)
-                                        <form class="form-delete inline-block" action="{{ route('cards.destroy', $card->id) }}" method="post">
+                                    {{-- @can('delete', $card) --}}
+                                        <form class="form-delete d-inline-block" action="{{ route('cards.destroy', $card->id) }}" method="post">
                                             @csrf
                                             @method('delete')
                                             <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
                                         </form>
-                                    @endcan
+                                    {{-- @endcan --}}
                                 </td>
                             </tr>
-                            @endcan
+                            {{-- @endcan --}}
                         @endforeach
                         @endslot
                 @endcomponent

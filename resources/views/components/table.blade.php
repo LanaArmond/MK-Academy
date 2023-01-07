@@ -1,7 +1,7 @@
-@if ($body != '' ) 
+@if ($body != '' )
     <div class="card">
         @if (isset($create) || isset($title))
-            <div class="card-header card-outline card-primary">
+            <div class="card-header card-outline card-danger">
                 <h3 class="float-left m-0 table-title"><strong>{{ $title ?? null }}</strong></h3>
                 @if (isset($create))
                     <div class="float-right mr-2">

@@ -45,13 +45,13 @@ class ClientController extends Controller
     public function store(StoreClientRequest $request)
     {
         $request->validated();
-        
+
         $client = new User();
-        $client->name = Crypt::encryptString($request->name);
+        $client->name = $request->name;
         $client->email = $request->email;
         $client->password = Hash::make($request->password);
-        $client->cpf = Crypt::encryptString($request->cpf);
-        $client->number = Crypt::encryptString($request->number);
+        $client->cpf = $request->cpf;
+        $client->number = $request->number;
         $client->birth_date = $request->birth_date;
         $client->registration_date = $request->registration_date;
         $client->type = "2";
@@ -118,9 +118,9 @@ class ClientController extends Controller
             $data['picture'] = $imgName;
         }
 
-        $data['name'] = Crypt::encryptString($request->name);
-        $data['cpf'] = Crypt::encryptString($request->cpf);
-        $data['number'] = Crypt::encryptString($request->number);
+        $data['name'] = $request->name;
+        $data['cpf'] = $request->cpf;
+        $data['number'] = $request->number;
 
         if(!$request->password){
             unset($data['password']);
