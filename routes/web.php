@@ -6,11 +6,15 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\EquipamentController;
 use App\Http\Controllers\PendentesController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SendMailController;
 use App\Models\Admin;
 use App\Models\Client;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\sendMail;
+
 
 
 /*
@@ -60,6 +64,8 @@ Route::middleware('auth', 'pendent')->group(function () {
     Route::post('/confirma/pendente/{professor}', [PendentesController::class, 'confirmaProfessor'])->name('confirmaProfessor.pendente');
     Route::delete('/recusa/pendente/{aluno}', [PendentesController::class, 'recusaAluno'])->name('recusaAluno');
     Route::delete('/recusa/pendente/{professor}', [PendentesController::class, 'recusaProfessor'])->name('recusaProfessor');
+
+    Route::get('/testroute',[SendMailController::class,'index']);
 
 });
 
