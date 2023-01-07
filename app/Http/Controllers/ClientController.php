@@ -81,11 +81,6 @@ class ClientController extends Controller
      */
     public function show(User $client)
     {
-        
-        $client->name = $client->getDecrypted($client->name);
-        $client->cpf = $client->getDecrypted($client->cpf);
-        $client->number = $client->getDecrypted($client->number);
-
         return view('client.show', compact('client'));
     }
 
@@ -97,10 +92,6 @@ class ClientController extends Controller
      */
     public function edit(User $client)
     {
-        $client->name = $client->getDecrypted($client->name);
-        $client->cpf = $client->getDecrypted($client->cpf);
-        $client->number = $client->getDecrypted($client->number);
-
         return view('client.edit', compact('client'));
     }
 

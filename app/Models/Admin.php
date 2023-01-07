@@ -20,4 +20,17 @@ class Admin extends Model
         'password',
         'picture'
     ];
+    
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = Crypt::encrypt($value);
+    }
+
+    public function getNameAttribute($value)
+    {
+        if (is_null($value)) {
+            return $value;
+        }
+        return Crypt::decrypt($value);
+    }
 }

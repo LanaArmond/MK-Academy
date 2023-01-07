@@ -71,8 +71,6 @@ class AdminController extends Controller
      */
     public function show(User $admin)
     {
-        $admin->name = $admin->getDecrypted($admin->name);
-
         return view('administrador.show', compact('admin'));
     }
 
@@ -84,8 +82,6 @@ class AdminController extends Controller
      */
     public function edit(User $admin)
     {
-        $admin->name = $admin->getDecrypted($admin->name);
-
         return view('administrador.edit', compact('admin'));
     }
 

@@ -70,7 +70,6 @@ class PersonalController extends Controller
      */
     public function show(User $personal)
     {
-        $personal->name = $personal->getDecrypted($personal->name);
         return view('personals.show', compact('personal'));
     }
 
@@ -82,7 +81,6 @@ class PersonalController extends Controller
      */
     public function edit(User $personal)
     {
-        $personal->name = $personal->getDecrypted($personal->name);
         return view('personals.edit', compact('personal'));
     }
 

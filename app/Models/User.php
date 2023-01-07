@@ -18,18 +18,44 @@ class User extends Authenticatable
         return Crypt::decryptString($value);
     }
 
-    // public function setNameAttribute($value)
-    // {
-    //     $this->attributes['name'] = Crypt::encrypt($value);
-    // }
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = Crypt::encrypt($value);
+    }
 
-    // public function getNameAttribute($value)
-    // {
-    //     if (is_null($value)) {
-    //         return $value;
-    //     }
-    //     return Crypt::decrypt($value);
-    // }
+    public function getNameAttribute($value)
+    {
+        if (is_null($value)) {
+            return $value;
+        }
+        return Crypt::decrypt($value);
+    }
+
+    public function setCpfAttribute($value)
+    {
+        $this->attributes['cpf'] = Crypt::encrypt($value);
+    }
+
+    public function getCpfAttribute($value)
+    {
+        if (is_null($value)) {
+            return $value;
+        }
+        return Crypt::decrypt($value);
+    }
+
+    public function setPhoneAttribute($value)
+    {
+        $this->attributes['phone'] = Crypt::encrypt($value);
+    }
+
+    public function getPhoneAttribute($value)
+    {
+        if (is_null($value)) {
+            return $value;
+        }
+        return Crypt::decrypt($value);
+    }
 
     /**
      * The attributes that are mass assignable.

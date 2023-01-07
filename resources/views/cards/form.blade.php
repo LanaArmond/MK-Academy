@@ -10,7 +10,7 @@
         <label for="client_id">Aluno: </label>
         <select class="select2" id="client" name="client_id" data-width="100%" value="{{ old('client_id',$card->client->id ?? null) }}">
             @foreach($clients as $client)
-                <option value="{{ $client->id }}">{{ getDecript()$client->name }}</option>
+                <option value="{{ $client->id }}">{{ $client->name }}</option>
             @endforeach
         </select>
         @error('client_id')
