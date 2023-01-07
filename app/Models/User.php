@@ -44,18 +44,22 @@ class User extends Authenticatable
         return Crypt::decrypt($value);
     }
 
-    public function setPhoneAttribute($value)
+    public function setNumberAttribute($value)
     {
-        $this->attributes['phone'] = Crypt::encrypt($value);
+        $this->attributes['number'] = Crypt::encrypt($value);
     }
 
-    public function getPhoneAttribute($value)
+    public function getNumberAttribute($value)
     {
         if (is_null($value)) {
             return $value;
         }
         return Crypt::decrypt($value);
     }
+
+    const ADMIN = 0;
+    const PERSONAL = 1;
+    const CLIENT = 2;
 
     /**
      * The attributes that are mass assignable.

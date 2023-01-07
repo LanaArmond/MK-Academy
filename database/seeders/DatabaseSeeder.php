@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
             PersonalSeeder::class,
             ClientSeeder::class,
             ExerciseSeeder::class,
+            EquipamentSeeder::class,
         ]);
 
         $this->call(CardSeeder::class);

@@ -10,6 +10,8 @@ class Admin extends Model
 {
     use HasFactory;
 
+    protected $table = 'users';
+
     public function getDecrypted($value){
         return Crypt::decryptString($value);
     }

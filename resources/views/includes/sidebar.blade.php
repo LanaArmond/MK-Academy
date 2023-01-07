@@ -72,7 +72,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link  {{ Route::is('teachers.index') ? 'active' : '' }}"
+                    <a class="nav-link  {{ Route::is('personals.index') ? 'active' : '' }}"
                       href="{{ route('personals.index') }}"
                     >
                         <i class="fas fa-fw far fa-chalkboard-teacher "></i>

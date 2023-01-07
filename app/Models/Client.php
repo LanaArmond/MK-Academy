@@ -10,6 +10,8 @@ class Client extends Model
 {
     use HasFactory;
 
+    protected $table = 'users';
+
     public function getDecrypted($value){
         return Crypt::decryptString($value);
     }
@@ -19,5 +21,44 @@ class Client extends Model
     public function cards()
     {
         return $this->hasMany(Card::class);
+    }
+
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = Crypt::encrypt($value);
+    }
+
+    public function getNameAttribute($value)
+    {
+        if (is_null($value)) {
+            return $value;
+        }
+        return Crypt::decrypt($value);
+    }
+
+    public function setCpfAttribute($value)
+    {
+        $this->attributes['cpf'] = Crypt::encrypt($value);
+    }
+
+    public function getCpfAttribute($value)
+    {
+        if (is_null($value)) {
+            return $value;
+        }
+        return Crypt::decrypt($value);
+    }
+
+    public function setNumberAttribute($value)
+    {
+        $this->attributes['number'] = Crypt::encrypt($value);
+    }
+
+    public function getNumberAttribute($value)
+    {
+        if (is_null($value)) {
+            return $value;
+        }
+        return Crypt::decrypt($value);
     }
 }
