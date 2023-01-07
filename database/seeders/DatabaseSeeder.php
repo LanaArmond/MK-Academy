@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Equipment;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -26,5 +28,6 @@ class DatabaseSeeder extends Seeder
             ExerciseSeeder::class,
             // PersonalSeeder::class
         ]);
+        $this->call(EquipmentSeeder::class);
     }
 }
