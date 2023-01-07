@@ -9,10 +9,10 @@ class Personal extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'image'
-    ];
+    protected $guarded = [];
+
+    public function cards()
+    {
+        return $this->hasMany(Card::class);
+    }
 }

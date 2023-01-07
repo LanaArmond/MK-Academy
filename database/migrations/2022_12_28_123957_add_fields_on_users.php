@@ -27,6 +27,10 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('cpf');
+            $table->dropColumn('number');
+            $table->dropColumn('birth_date');
+        });
     }
 };

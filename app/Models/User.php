@@ -17,6 +17,20 @@ class User extends Authenticatable
     public function getDecrypted($value){
         return Crypt::decryptString($value);
     }
+
+    // public function setNameAttribute($value)
+    // {
+    //     $this->attributes['name'] = Crypt::encrypt($value);
+    // }
+
+    // public function getNameAttribute($value)
+    // {
+    //     if (is_null($value)) {
+    //         return $value;
+    //     }
+    //     return Crypt::decrypt($value);
+    // }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -55,7 +69,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function cards(){
+    public function cards()
+    {
         return $this->hasMany(Card::class);
     }
 }

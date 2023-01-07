@@ -19,7 +19,7 @@
                 <fieldset disabled>
                 <div class="row">
                     <div class="form-group col-sm-12 col-md-6">
-                        <img class="profile-user-img img-fluid img-circle" style="height: 100px;width:100px" src="" alt="Foto de perfil">
+                        <img class="profile-user-img img-fluid img-circle" style="height: 200px;width:200px" src="{{ asset("img/profilePic/" . $personal->picture) }}" alt="User profile picture">
                     </div>
                 </div>
 

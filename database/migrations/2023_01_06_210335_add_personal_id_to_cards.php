@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('users', function(Blueprint $table){
-            $table->string('type')->nullable();
-            $table->string('picture')->default("0a65f647f6f58c6cd55ddc3608c629de");
+        Schema::table('cards', function (Blueprint $table) {
+            $table->unsignedBigInteger('personal_id')->nullable();
+            $table->foreign('personal_id')->references('id')->on('users')->onDelete('set null');
         });
     }
 
@@ -26,9 +26,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('users', function(Blueprint $table){
-            $table->dropColumn('type');
-            $table->dropColumn('picture');
+        Schema::table('cards', function (Blueprint $table) {
+            $table->dropColumn('personal_id');
+            $table->dropForeign('personal_id');
         });
     }
 };

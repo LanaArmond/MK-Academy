@@ -5,7 +5,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 @component('components.table')
-                    @slot('create', route('exercises.create'))
+                    @slot('create', route('cards.create'))
                     @slot('title', 'Fichas')
                     @slot('head')
                         <th width="7%">Ficha</th>
@@ -17,7 +17,7 @@
                             @can('view', $card)
                             <tr>
                                 <td>{{ $card->identifier }}</td>
-                                <td>{{ $card->personal }}</td>
+                                <td>{{ $card->personal->name }}</td>
                                 <td class="options">
 
                                     @can('update', $card)
@@ -29,7 +29,7 @@
                                     @endcan
 
                                     @can('delete', $card)
-                                        <form class="form-delete inline-block" action="{{ route('cards.destroy', $exercise->id) }}" method="post">
+                                        <form class="form-delete inline-block" action="{{ route('cards.destroy', $card->id) }}" method="post">
                                             @csrf
                                             @method('delete')
                                             <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>

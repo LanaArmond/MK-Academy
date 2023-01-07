@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Card;
+use App\Models\User;
+use App\Models\Exercise;
 use Illuminate\Http\Request;
 
 use App\Http\Requests\StoreCardRequest;
@@ -29,8 +31,11 @@ class CardController extends Controller
      */
     public function create()
     {
+        $personals = User::where('type', "1")->get();
+        $clients = User::where('type', "2")->get();
+        $exercises = Exercise::all();
         $card = new Card();
-        return view('cards.create', compact('card'));
+        return view('cards.create', compact('card', 'personals', 'clients', 'exercises'));
     }
 
     /**
@@ -56,7 +61,10 @@ class CardController extends Controller
      */
     public function show(Card $card)
     {
-        return view('cards.show', compact('card'));
+        $personals = User::where('type', "1")->get();
+        $clients = User::where('type', "2")->get();
+        $exercises = Exercise::all();
+        return view('cards.show', compact('card', 'personals', 'clients', 'exercises'));
     }
 
     /**
@@ -67,7 +75,10 @@ class CardController extends Controller
      */
     public function edit(Card $card)
     {
-        return view('cards.edit', compact('card'));
+        $personals = User::where('type', "1")->get();
+        $clients = User::where('type', "2")->get();
+        $exercises = Exercise::all();
+        return view('cards.edit', compact('card', 'personals', 'clients', 'exercises'));
     }
 
     /**

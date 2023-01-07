@@ -24,7 +24,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   {{-- FontAwesome --}}
   <script src="https://kit.fontawesome.com/68b5c523c3.js" crossorigin="anonymous"></script>
-  
+
   {{-- Jquery --}}
   <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 
@@ -36,6 +36,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('vendor/adminlte/dist/css/adminlte.min.css')}}">
+
+  {{-- Select2 --}}
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
   @stack('styles')
 
 </head>
@@ -63,7 +68,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <footer class="main-footer">
     <!-- To the right -->
     <div class="float-right d-none d-sm-inline">
-      
+
     </div>
     <!-- Default to the left -->
     <strong>Copyright &copy; 2014-2023 <a href="https://adminlte.io">Códigos diminutos.io</a>.</strong> All rights reserved.

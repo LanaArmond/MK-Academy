@@ -72,6 +72,15 @@ Route::get('/card/{card}/edit', [CardController::class, 'edit'])->name('cards.ed
 Route::put('/card/{card}/update/', [CardController::class, 'update'])->name('cards.update');
 Route::delete('/card/{card}/destroy', [CardController::class, 'destroy'])->name('cards.destroy');
 Route::get('/card/{card}/show', [CardController::class, 'show'])->name('cards.show');
+
+Route::get('/personal', [PersonalController::class, 'index'])->name('personals.index');
+Route::get('/personal/create', [PersonalController::class, 'create'])->name('personals.create');
+Route::post('/personal/store', [PersonalController::class, 'store'])->name('personals.store');
+Route::get('/personal/{personal}/edit', [PersonalController::class, 'edit'])->name('personals.edit');
+Route::put('/personal/{personal}/update/', [PersonalController::class, 'update'])->name('personals.update');
+Route::delete('/personal/{personal}/destroy', [PersonalController::class, 'destroy'])->name('personals.destroy');
+Route::get('/personal/{personal}/show', [PersonalController::class, 'show'])->name('personals.show');
+
 Route::get('/registroAluno', [RegisterController::class, 'registraAlunoIndex'])->name('registraAluno.index');
 Route::post('/registro/aluno', [RegisterController::class, 'registraAluno'])->name('registra.aluno');
 Route::get('/registroProfessor', [RegisterController::class, 'registraProfessorIndex'])->name('registraProfessor.index');

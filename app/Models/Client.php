@@ -15,4 +15,9 @@ class Client extends Model
     }
 
     protected $guarded = [];
+
+    public function cards()
+    {
+        return $this->hasMany(Card::class);
+    }
 }
