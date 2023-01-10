@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Card;
 use App\Models\User;
 use App\Models\Exercise;
-use Illuminate\Http\Request;
-
 use App\Http\Requests\StoreCardRequest;
 use App\Http\Requests\UpdateCardRequest;
 
@@ -41,7 +39,7 @@ class CardController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreCardRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreCardRequest $request)
@@ -86,7 +84,7 @@ class CardController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\UpdateCardRequest  $request
      * @param  \App\Models\Card  $card
      * @return \Illuminate\Http\Response
      */

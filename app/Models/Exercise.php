@@ -20,4 +20,12 @@ class Exercise extends Model
             'exercise_id',
         );
     }
+
+    /**
+     * Get the equipament that owns the Exercise.
+     */
+    public function equipament()
+    {
+        return $this->belongsTo(Equipament::class);
+    }
 }

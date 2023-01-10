@@ -10,6 +10,8 @@ class Personal extends Model
 {
     use HasFactory;
 
+    protected $table = 'users';
+
     protected $guarded = [];
 
     public function cards()

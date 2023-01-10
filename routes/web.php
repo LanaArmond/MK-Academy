@@ -6,13 +6,11 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\EquipamentController;
 use App\Http\Controllers\PendentesController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SendMailController;
 use App\Http\Controllers\PersonalController;
 use App\Http\Controllers\CardController;
-use App\Models\Admin;
-use App\Models\Client;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
-use App\Models\User;
+
 
 
 /*
@@ -63,28 +61,29 @@ Route::middleware('auth', 'pendent')->group(function () {
     Route::delete('/recusa/pendente/{aluno}', [PendentesController::class, 'recusaAluno'])->name('recusaAluno');
     Route::delete('/recusa/pendente/{professor}', [PendentesController::class, 'recusaProfessor'])->name('recusaProfessor');
 
+    Route::get('/testroute',[SendMailController::class,'index']);
+
+    Route::get('/card', [CardController::class, 'index'])->name('cards.index');
+    Route::get('/card/create', [CardController::class, 'create'])->name('cards.create');
+    Route::post('/card/store', [CardController::class, 'store'])->name('cards.store');
+    Route::get('/card/{card}/edit', [CardController::class, 'edit'])->name('cards.edit');
+    Route::put('/card/{card}/update/', [CardController::class, 'update'])->name('cards.update');
+    Route::delete('/card/{card}/destroy', [CardController::class, 'destroy'])->name('cards.destroy');
+    Route::get('/card/{card}/show', [CardController::class, 'show'])->name('cards.show');
+    
+    Route::get('/personal', [PersonalController::class, 'index'])->name('personals.index');
+    Route::get('/personal/create', [PersonalController::class, 'create'])->name('personals.create');
+    Route::post('/personal/store', [PersonalController::class, 'store'])->name('personals.store');
+    Route::get('/personal/{personal}/edit', [PersonalController::class, 'edit'])->name('personals.edit');
+    Route::put('/personal/{personal}/update/', [PersonalController::class, 'update'])->name('personals.update');
+    Route::delete('/personal/{personal}/destroy', [PersonalController::class, 'destroy'])->name('personals.destroy');
+    Route::get('/personal/{personal}/show', [PersonalController::class, 'show'])->name('personals.show');
+    
+    Route::get('/registroAluno', [RegisterController::class, 'registraAlunoIndex'])->name('registraAluno.index');
+    Route::post('/registro/aluno', [RegisterController::class, 'registraAluno'])->name('registra.aluno');
+    Route::get('/registroProfessor', [RegisterController::class, 'registraProfessorIndex'])->name('registraProfessor.index');
+    Route::post('/registro/professor', [RegisterController::class, 'registraProfessor'])->name('registra.professor');
 });
 
-Route::get('/card', [CardController::class, 'index'])->name('cards.index');
-Route::get('/card/create', [CardController::class, 'create'])->name('cards.create');
-Route::post('/card/store', [CardController::class, 'store'])->name('cards.store');
-Route::get('/card/{card}/edit', [CardController::class, 'edit'])->name('cards.edit');
-Route::put('/card/{card}/update/', [CardController::class, 'update'])->name('cards.update');
-Route::delete('/card/{card}/destroy', [CardController::class, 'destroy'])->name('cards.destroy');
-Route::get('/card/{card}/show', [CardController::class, 'show'])->name('cards.show');
-Route::get('/card/{card}/trainingMode', [CardController::class, 'trainingMode'])->name('card.trainingMode');
-
-Route::get('/personal', [PersonalController::class, 'index'])->name('personals.index');
-Route::get('/personal/create', [PersonalController::class, 'create'])->name('personals.create');
-Route::post('/personal/store', [PersonalController::class, 'store'])->name('personals.store');
-Route::get('/personal/{personal}/edit', [PersonalController::class, 'edit'])->name('personals.edit');
-Route::put('/personal/{personal}/update/', [PersonalController::class, 'update'])->name('personals.update');
-Route::delete('/personal/{personal}/destroy', [PersonalController::class, 'destroy'])->name('personals.destroy');
-Route::get('/personal/{personal}/show', [PersonalController::class, 'show'])->name('personals.show');
-
-Route::get('/registroAluno', [RegisterController::class, 'registraAlunoIndex'])->name('registraAluno.index');
-Route::post('/registro/aluno', [RegisterController::class, 'registraAluno'])->name('registra.aluno');
-Route::get('/registroProfessor', [RegisterController::class, 'registraProfessorIndex'])->name('registraProfessor.index');
-Route::post('/registro/professor', [RegisterController::class, 'registraProfessor'])->name('registra.professor');
 
 require __DIR__.'/auth.php';

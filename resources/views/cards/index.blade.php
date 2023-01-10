@@ -18,8 +18,8 @@
                             {{-- @can('view', $card) --}}
                             <tr>
                                 <td>{{ $card->identifier }}</td>
-                                <td>{{ $card->personal->name }}</td>
-                                <td>{{ $card->client->name }}</td>
+                                <td>{{ $card->personal->name ?? null }}</td>
+                                <td>{{ $card->client->name ?? null }}</td>
                                 <td class="options d-flex justify-content-end">
 
                                         <a href="{{ route('card.trainingMode', $card->id) }}" class="btn btn-sm btn-success mr-1"><i class="fas fa-flag"></i></a>
