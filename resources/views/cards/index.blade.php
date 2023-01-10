@@ -21,8 +21,9 @@
                                 <td>{{ $card->personal->name ?? null }}</td>
                                 <td>{{ $card->client->name ?? null }}</td>
                                 <td class="options d-flex justify-content-end">
-
+                                    @can('view', TrainingModePolicy::class)
                                         <a href="{{ route('card.trainingMode', $card->id) }}" class="btn btn-sm btn-success mr-1"><i class="fas fa-flag"></i></a>
+                                    @endcan
 
                                     {{-- @can('update', $card) --}}
                                         <a href="{{ route('cards.edit', $card->id) }}" class="btn btn-sm btn-primary mr-1"><i class="fas fa-pen"></i></a>
