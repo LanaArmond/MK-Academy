@@ -84,6 +84,7 @@ Route::middleware('auth', 'pendent')->group(function () {
     
     //Training mode
     Route::get('/trainingMode/{card}', [TrainingModeController::class, 'trainingMode'])->name('card.trainingMode');
+    Route::post('/trainingMode/{card}', [TrainingModeController::class, 'endTraining'])->name('card.endTraining');
 
     
     Route::get('/registroAluno', [RegisterController::class, 'registraAlunoIndex'])->name('registraAluno.index');
