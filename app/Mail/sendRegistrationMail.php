@@ -10,11 +10,10 @@ use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use App\Models\User;
 
-class SendMail extends Mailable
+class sendRegistrationMail extends Mailable
 {
     use Queueable, SerializesModels;
     public $name;
-
     /**
      * Create a new message instance.
      *
@@ -33,8 +32,8 @@ class SendMail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            from: 'email@mkacademy.com',
-            subject: 'Test Email',
+            from: 'email@mkacademy.com.br',
+            subject: 'Lembrete de Matrícula',
         );
     }
 
@@ -43,15 +42,13 @@ class SendMail extends Mailable
      *
      * @return \Illuminate\Mail\Mailables\Content
      */
-
     public function content()
     {
         return new Content(
-            view: 'mail.birthday',
+            view: 'mail.registration',
+            
         );
     }
-
-    
 
     /**
      * Get the attachments for the message.
@@ -62,5 +59,4 @@ class SendMail extends Mailable
     {
         return [];
     }
-
 }

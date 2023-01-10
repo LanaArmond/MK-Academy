@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\Models\User;
+use App\Jobs\sendRegistrationMailJob;
 
 class SendRegistrationMail extends Command
 {
@@ -30,9 +31,19 @@ class SendRegistrationMail extends Command
     {
         date_default_timezone_set('America/Sao_Paulo');
 
-        $day = date('d');
-        $users = User::where('type',2)->where('Day(registration_date)', $day)->get();
-        dd($users);
+        $tomorrow = date('d', strtotime('+1 day'));
+
+        $users = User::where('type', 2)->get();
+
+
+        foreach($users as $user){
+            $userRegistrationDay = date('d', strtotime($user->registration_date));
+            
+            if($userRegistrationDay == $tomorrow){
+                sendRegistrationMailJob::dispatch($user);
+            }
+        }
+
         return Command::SUCCESS;
     }
 }

@@ -15,6 +15,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Commands\SendBirthdayMail::class,
+        Commands\SendRegistrationMail::class,
     ];
 
     /**
@@ -27,6 +28,7 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
         $schedule->command('send:sendBirthdayMail')->everyMinute();
+        $schedule->command('send:sendRegistrationMail')->everyMinute();
         
     }
 

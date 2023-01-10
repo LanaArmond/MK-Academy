@@ -10,19 +10,18 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\SendBirthDayMail;
+use App\Mail\sendRegistrationMail;
 
-class sendBirthdayMailJob implements ShouldQueue
+class sendRegistrationMailJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
     protected $user;
-
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct(User $user) 
+    public function __construct(User $user)
     {
         $this->user = $user;
     }
@@ -34,6 +33,6 @@ class sendBirthdayMailJob implements ShouldQueue
      */
     public function handle()
     {
-        Mail::to($this->user->email)->send(new sendBirthdayMail($this->user));
+        Mail::to($this->user->email)->send(new sendRegistrationMail($this->user));
     }
 }

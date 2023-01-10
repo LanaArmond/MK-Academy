@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\sendMail;
+use App\Mail\sendBirthdayMail;
 
 class SendMailController extends Controller
 {
@@ -21,7 +21,7 @@ class SendMailController extends Controller
         $users = User::where('birth_date', date('Y-m-d'))->get();
         $user = $users->shift();
     
-        Mail::to($user->email)->send(new sendMail($user));
+        Mail::to($user->email)->send(new sendBirthdayMail($user));
 
     }
 
