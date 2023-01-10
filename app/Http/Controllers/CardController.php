@@ -113,4 +113,10 @@ class CardController extends Controller
 
         return redirect()->route('cards.index')->with('success', true);
     }
+
+    public function trainingMode(Card $card)
+    {
+        $exercises = $card->exercises;
+        return view('cards.trainingMode', compact('card', 'exercises'));
+    }
 }

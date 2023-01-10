@@ -72,6 +72,7 @@ Route::get('/card/{card}/edit', [CardController::class, 'edit'])->name('cards.ed
 Route::put('/card/{card}/update/', [CardController::class, 'update'])->name('cards.update');
 Route::delete('/card/{card}/destroy', [CardController::class, 'destroy'])->name('cards.destroy');
 Route::get('/card/{card}/show', [CardController::class, 'show'])->name('cards.show');
+Route::get('/card/{card}/trainingMode', [CardController::class, 'trainingMode'])->name('card.trainingMode');
 
 Route::get('/personal', [PersonalController::class, 'index'])->name('personals.index');
 Route::get('/personal/create', [PersonalController::class, 'create'])->name('personals.create');
