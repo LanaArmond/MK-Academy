@@ -6,6 +6,8 @@ use App\Models\Card;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
+use function PHPSTORM_META\type;
+
 class CardPolicy
 {
     use HandlesAuthorization;
@@ -18,7 +20,7 @@ class CardPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return User::ADMIN == $user->type;
     }
 
     /**
@@ -30,7 +32,10 @@ class CardPolicy
      */
     public function view(User $user, Card $card)
     {
-        //
+        return 
+            User::ADMIN == $user->type ||
+            $card->client->id == $user->id ||
+            $card->personal->id == $user->id;
     }
 
     /**
@@ -41,7 +46,7 @@ class CardPolicy
      */
     public function create(User $user)
     {
-        //
+        return User::ADMIN == $user->type || User::ADMIN == $user->id;
     }
 
     /**
@@ -53,7 +58,9 @@ class CardPolicy
      */
     public function update(User $user, Card $card)
     {
-        //
+        return 
+            User::ADMIN == $user->type ||
+            $card->personal->id == $user->id;
     }
 
     /**
@@ -65,7 +72,10 @@ class CardPolicy
      */
     public function delete(User $user, Card $card)
     {
-        //
+        return 
+            User::ADMIN == $user->type ||
+            $card->client->id == $user->id ||
+            $card->personal->id == $user->id;
     }
 
     /**
@@ -90,5 +100,10 @@ class CardPolicy
     public function forceDelete(User $user, Card $card)
     {
         //
+    }
+
+    public function viewTrainingMode(User $user, Card $card)
+    {
+        return User::PERSONAL == $user->type || User::ADMIN == $user->type || $card->client == $user->id;
     }
 }

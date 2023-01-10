@@ -25,6 +25,8 @@ class ClientFactory extends Factory
             'number' => $this->faker->phoneNumber(),
             'birth_date' => $this->faker->date(),
             'registration_date' => $this->faker->date(),
+            'streak' => random_int(0, 10),
+            'streakDate' => $this->faker->date(),
             'type' => User::CLIENT,
             'status' => "1",
         ];

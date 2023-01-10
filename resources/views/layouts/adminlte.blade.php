@@ -71,7 +71,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2014-2023 <a href="https://adminlte.io">Códigos diminutos.io</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2014-2023 <a target="_blank" href="http://www.professorfabriciomendonca.com.br/">Códigos diminutos.io</a>.</strong> All rights reserved.
   </footer>
 </div>
 <!-- ./wrapper -->

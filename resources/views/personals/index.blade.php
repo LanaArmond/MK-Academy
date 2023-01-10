@@ -13,6 +13,7 @@
 
     <div class="row">
         @foreach ($personals as $personal)
+        {{-- @can('viewAny') --}}
             <div class="col-md-3 mt-2">
                 <div class="card card-outline">
                     <div class="card-body box-profile">
@@ -22,17 +23,26 @@
                         <br>
                         <h3 class="profile-username text-center">{{ $personal->name }}</h3>
                         <div class="options text-center d-flex mt-2 justify-content-center">
-                            <a href="{{ route('personals.show', $personal->id) }}" class="btn btn-dark mr-2"><i class="fas fa-eye"></i></a>
+                            {{-- @can('view') --}}
+                                <a href="{{ route('personals.show', $personal->id) }}" class="btn btn-dark mr-2"><i class="fas fa-eye"></i></a>
+                            {{-- @endcan --}}
+
+                            {{-- @can('update', $personal) --}}
                                 <a href="{{ route('personals.edit', $personal->id) }}" class="btn btn-primary mr-2"><i class="fas fa-pen"></i></a>
+                            {{-- @endcan --}}
+
+                            {{-- @can('delete', $personal) --}}
                                 <form class="form-delete" action="{{ route('personals.destroy', $personal->id) }}" method="post">
                                     @csrf
                                     @method('delete')
                                     <button type="submit" class="btn btn-danger "><i class="fas fa-trash "></i></button>
                                 </form>
+                            {{-- @endcan --}}
                         </div>
                     </div>
                 </div>
             </div>
+        {{-- @endcan --}}
         @endforeach
     </div>
 @endsection

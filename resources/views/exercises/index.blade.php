@@ -17,7 +17,7 @@
                     @endslot
                     @slot('body')
                         @foreach ($exercises as $exercise)
-                            @can('view', $exercise)
+                            @can('viewAny', $exercise)
                             <tr>
                                 <td>{{ $exercise->name }}</td>
                                 <td>{{ $exercise->description }}</td>

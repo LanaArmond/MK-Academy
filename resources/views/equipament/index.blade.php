@@ -14,7 +14,7 @@
                     @endslot
                     @slot('body')
                         @foreach ($equipaments as $equipament)
-                            @can('view', $equipament)
+                            @can('viewAny', $equipament)
                             <tr>
                                 <td>{{ $equipament->name }}</td>
                                 <td>{{ $equipament->number }}</td>

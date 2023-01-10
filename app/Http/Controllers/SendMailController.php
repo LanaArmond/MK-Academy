@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\User;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\sendMail;
+use Illuminate\Support\Facades\Artisan;
+
 
 class SendMailController extends Controller
 {
@@ -16,13 +14,7 @@ class SendMailController extends Controller
      */
     public function index()
     {
-        date_default_timezone_set('America/Sao_Paulo');
-
-        $users = User::where('birth_date', date('Y-m-d'))->get();
-        $user = $users->shift();
-    
-        Mail::to($user->email)->send(new sendMail($user));
-
+        return view('sendMessage.index');
     }
 
     /**
@@ -30,64 +22,25 @@ class SendMailController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function sendBirthdayMail()
     {
-        //
+        Artisan::call('send:sendBirthdayMail');
+        
+        return to_route('sendMailIndex')->with('message', 'Email de Aniversário enviado com sucesso !');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function sendStreakMail()
     {
-        //
+        Artisan::call('send:sendStreakMail');
+
+        return to_route('sendMailIndex')->with('message', 'Email de Streak enviado com sucesso !');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function sendRegistrationMail()
     {
-        //
+        Artisan::call('send:sendRegistrationMail');
+
+        return to_route('sendMailIndex')->with('message', 'Email de Mensalidade enviado com sucesso !');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

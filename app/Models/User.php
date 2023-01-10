@@ -77,7 +77,9 @@ class User extends Authenticatable
         'birth_date',
         'registration_date',
         'type', // 0 para admin, 1 para professor 2 para aluno
-        'status' // 0 para pendente e 1 para ativo
+        'status' ,// 0 para pendente e 1 para ativo
+        'streak',
+        'streakDate',
     ];
 
     /**

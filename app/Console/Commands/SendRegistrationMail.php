@@ -4,24 +4,23 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\Models\User;
-use App\Jobs\sendBirthdayMailJob;
-use Carbon\Carbon;
+use App\Jobs\sendRegistrationMailJob;
 
-class SendBirthdayMail extends Command
+class SendRegistrationMail extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'send:sendBirthdayMail';
+    protected $signature = 'send:sendRegistrationMail';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Sends an email to users with birthday today';
+    protected $description = 'Send an email to users that registration is 1 day to expiring';
 
     /**
      * Execute the console command.
@@ -32,18 +31,16 @@ class SendBirthdayMail extends Command
     {
         date_default_timezone_set('America/Sao_Paulo');
 
-        $now = Carbon::now();
-        $day = $now->day;
-        $month = $now->month;
+        $tomorrow = date('d', strtotime('+1 day'));
 
         $users = User::where('type', 2)->get();
 
+
         foreach($users as $user){
+            $userRegistrationDay = date('d', strtotime($user->registration_date));
             
-            $userBirthDate = Carbon::create($user->birth_date);
-            
-            if($userBirthDate->day == $day && $userBirthDate->month == $month){
-                sendBirthdayMailJob::dispatch($user);
+            if($userRegistrationDay == $tomorrow){
+                sendRegistrationMailJob::dispatch($user);
             }
         }
 

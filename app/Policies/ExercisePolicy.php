@@ -18,7 +18,8 @@ class ExercisePolicy
      */
     public function viewAny(User $user)
     {
-        return true;
+        return 
+            User::ADMIN == $user->type || User::PERSONAL == $user->type;
     }
 
     /**
@@ -30,8 +31,8 @@ class ExercisePolicy
      */
     public function view(User $user, Exercise $exercise)
     {
-        return true;
-        //
+        return 
+            User::ADMIN == $user->type || User::PERSONAL == $user->type;
     }
 
     /**
@@ -42,8 +43,8 @@ class ExercisePolicy
      */
     public function create(User $user)
     {
-        return true;
-        //
+        return 
+            User::ADMIN == $user->type || User::PERSONAL == $user->type;
     }
 
     /**
@@ -55,8 +56,8 @@ class ExercisePolicy
      */
     public function update(User $user, Exercise $exercise)
     {
-        return true;
-        //
+        return 
+            User::ADMIN == $user->type || User::PERSONAL == $user->type;
     }
 
     /**
@@ -68,8 +69,8 @@ class ExercisePolicy
      */
     public function delete(User $user, Exercise $exercise)
     {
-        return true;
-        //
+        return 
+            User::ADMIN == $user->type;
     }
 
     /**

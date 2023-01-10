@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Equipament;
+use App\Models\Client;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class EquipamentPolicy
+class ClientPolicy
 {
     use HandlesAuthorization;
 
@@ -25,12 +25,13 @@ class EquipamentPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Equipament  $equipament
+     * @param  \App\Models\Client  $client
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Equipament $equipament)
+    public function view(User $user, User $client)
     {
-        return User::ADMIN == $user->type || User::PERSONAL == $user->type;
+        return 
+            User::ADMIN == $user->type || User::PERSONAL == $user->type || $client->id == $user->id;
     }
 
     /**
@@ -41,43 +42,45 @@ class EquipamentPolicy
      */
     public function create(User $user)
     {
-        return User::ADMIN == $user->type || User::PERSONAL == $user->type;
+        return 
+            User::ADMIN == $user->type;
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Equipament  $equipament
+     * @param  \App\Models\Client  $client
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Equipament $equipament)
+    public function update(User $user, User $client)
     {
-        return User::ADMIN == $user->type || User::PERSONAL == $user->type;
+        dd("i");
+        return User::ADMIN == $user->type || $client->id == $user->id;
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Equipament  $equipament
+     * @param  \App\Models\Client  $client
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Equipament $equipament)
+    public function delete(User $user, User $client)
     {
-        return User::ADMIN == $user->type;
+        return 
+            User::ADMIN == $user->type || $client->id == $user->id;
     }
 
     /**
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Equipament  $equipament
+     * @param  \App\Models\Client  $client
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Equipament $equipament)
+    public function restore(User $user, Client $client)
     {
-        return true;
         //
     }
 
@@ -85,12 +88,11 @@ class EquipamentPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Equipament  $equipament
+     * @param  \App\Models\Client  $client
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Equipament $equipament)
+    public function forceDelete(User $user, Client $client)
     {
-        return true;
         //
     }
 }
