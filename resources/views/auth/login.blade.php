@@ -3,7 +3,7 @@
         <x-slot name="logo">
             <a href="/">
                 {{-- <x-application-logo class="w-20 h-20 fill-current text-gray-500" /> --}}
-                <img src="{{ public_path("/img/Logo.png") }}" />
+                <img src="{{ asset("/img/Logo.png") }}" />
             </a>
         </x-slot>
 
