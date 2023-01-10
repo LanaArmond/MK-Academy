@@ -64,7 +64,10 @@ Route::middleware('auth', 'pendent')->group(function () {
     Route::delete('/recusa/pendente/{aluno}', [PendentesController::class, 'recusaAluno'])->name('recusaAluno');
     Route::delete('/recusa/pendente/{professor}', [PendentesController::class, 'recusaProfessor'])->name('recusaProfessor');
 
-    Route::get('/testroute',[SendMailController::class,'index']);
+    Route::get('/sendMessage',[SendMailController::class,'index'])->name('sendMailIndex');
+    Route::get('/sendBirthdayMail', [SendMailController::class, 'sendBirthdayMail'])->name('sendBirthdayMail');
+    Route::get('/sendRegistrationMail', [SendMailController::class, 'sendRegistrationMail'])->name('sendRegistrationMail');
+    Route::get('/sendStreakMail', [SendMailController::class, 'sendStreakMail'])->name('sendStreakMail');
 
     Route::get('/card', [CardController::class, 'index'])->name('cards.index');
     Route::get('/card/create', [CardController::class, 'create'])->name('cards.create');
