@@ -30,14 +30,21 @@
             </table>
         </div>
     </div>
-@else
+@elseif(isset($create))
     <div class="text-center" style="color: #949699">
         <i class="fas fa-exclamation-circle" style="font-size: 10em"></i>
         <p class="mb-4 h2">Nenhum item encontrado!</p>
-        <a href="{{ $create }}">
+        <a href="{{ $create  }}">
             <button type="button" class="btn btn-dark button-create mb-4">
                 <b><i class="fas fa-plus-circle"></i> Adicionar</b>
             </button>
         </a>
+    </div>
+@elseif(isset($card))
+    <div class="text-center pt-4 pb-4" style="color: #949699">
+        <i class="fas fa-exclamation-circle" style="font-size: 10em"></i>
+        <p class="mb-4 h2">
+            Nenhum Exercício encontrado! Entre em contato com o {{ $card->personal->name ?? 'Administrador' }}, para que ele possa adicionar exercícios a sua ficha.
+        </p>
     </div>
 @endif

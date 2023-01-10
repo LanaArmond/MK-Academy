@@ -5,6 +5,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 @component('components.table')
                     @slot('title', "Ficha $card->identifier")
+                    @slot('card', $card)
                     @slot('head')
                         <th width="20%">Exercício</th>
                         <th width="20%">Séries</th>
