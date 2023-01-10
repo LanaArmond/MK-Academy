@@ -11,6 +11,7 @@ class TrainingModeController extends Controller
     public function trainingMode(Card $card)
     {
         $exercises = $card->exercises;
+
         return view('cards.trainingMode', compact('card', 'exercises'));
     }
 

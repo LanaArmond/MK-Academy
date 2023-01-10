@@ -22,8 +22,8 @@
                                         <td>{{ $exercise->name }}</td>
                                         <td>{{ $exercise->seriesNumber }} X {{ $exercise->repetitionNumber }}</td>
                                         <td>
-                                            @if(isset($exercise->equipment))
-                                                {{ $exercise->equipment->name }} - {{ $exercise->equipment->number }}
+                                            @if(isset($exercise->equipament))
+                                                {{ $exercise->equipament->name }} - {{ $exercise->equipament->number }}
                                             @else
 
                                             @endif
