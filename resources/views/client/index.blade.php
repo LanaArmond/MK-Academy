@@ -11,36 +11,37 @@
     </div>
 
     <div class="row">
-        @foreach ($clients as $client)
-            
-            <div class="col-md-3 mt-2">
-                <div class="card card-outline">
-                    <div class="card-body box-profile">
-                        <div class="text-center">
-                            <img class="profile-user-img img-fluid img-circle" style="height: 100px;width:100px" src="{{ asset("img/profilePic/" . $client->picture ) }}" alt="User profile picture">
-                        </div>
-                        <br>
-                        <h3 class="profile-username text-center">{{ $client->name}}</h3>
-                        <div class="options text-center d-flex mt-2 justify-content-center">
-                            {{-- @can('view', $admin) --}}
-                            <a href="{{ route('clients.show', $client->id) }}" class="btn btn-dark mr-2"><i class="fas fa-eye"></i></a>
-                            {{-- @endcan --}}
-                            {{-- @can('update', $admin) --}}
-                            <a href="{{ route('clients.edit', $client->id) }}" class="btn btn-primary mr-2"><i class="fas fa-pen"></i></a>
-                            {{-- @endcan --}}
-                            {{-- @can('delete', $admin) --}}
-                            <form class="form-delete" action="{{ route('clients.destroy', $client->id) }}" method="post">
-                                @csrf
-                                @method('delete')
-                                <button type="submit" class="btn btn-danger "><i class="fas fa-trash "></i></button>
-                            </form>
-                            {{-- @endcan --}}
+        {{-- @can('viewAny', App\Models\Client::class) --}}
+            @foreach ($clients as $client)
+                <div class="col-md-3 mt-2">
+                    <div class="card card-outline">
+                        <div class="card-body box-profile">
+                            <div class="text-center">
+                                <img class="profile-user-img img-fluid img-circle" style="height: 100px;width:100px" src="{{ asset("img/profilePic/" . $client->picture ) }}" alt="User profile picture">
+                            </div>
+                            <br>
+                            <h3 class="profile-username text-center">{{ $client->name}}</h3>
+                            <div class="options text-center d-flex mt-2 justify-content-center">
+                                {{-- @can('view',  $client, App\Models\Client::class) --}}
+                                    <a href="{{ route('clients.show', $client->id) }}" class="btn btn-dark mr-2"><i class="fas fa-eye"></i></a>
+                                {{-- @endcan --}}
+                                {{-- @can('update', $client,  App\Models\Client::class) --}}
+                                    <a href="{{ route('clients.edit', $client->id) }}" class="btn btn-primary mr-2"><i class="fas fa-pen"></i></a>
+                                {{-- @endcan --}}
+                                {{-- @can('delete', $client,  App\Models\Client::class) --}}
+                                    <form class="form-delete" action="{{ route('clients.destroy', $client->id) }}" method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="btn btn-danger "><i class="fas fa-trash "></i></button>
+                                    </form>
+                                {{-- @endcan --}}
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        @endforeach
-
+            @endforeach
+        {{-- @endcan --}}
+        
         @if($clients->count() == 0)
             <div class="text-center" style="color: #949699">
                 <i class="fas fa-exclamation-circle" style="font-size: 10em"></i>

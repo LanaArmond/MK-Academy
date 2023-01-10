@@ -62,78 +62,94 @@
                 data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-               <li class="nav-item">
-                  <a class="nav-link {{ Route::is('clients.index') ? 'active' : '' }}"
-                    href="{{ route('clients.index') }}"
-                  >
-                      <i class="fas fa-fw fa-users "></i>
-                      <p> Alunos </p>
-                  </a>
-                </li>
+                @can('viewAny', App\Models\Client::class)
+                    <li class="nav-item">
+                        <a class="nav-link {{ Route::is('clients.index') ? 'active' : '' }}"
+                            href="{{ route('clients.index') }}"
+                        >
+                            <i class="fas fa-fw fa-users "></i>
+                            <p> Alunos </p>
+                        </a>
+                    </li>
+                @endcan
 
-                <li class="nav-item">
-                    <a class="nav-link  {{ Route::is('personals.index') ? 'active' : '' }}"
-                      href="{{ route('personals.index') }}"
-                    >
-                        <i class="fas fa-fw far fa-chalkboard-teacher "></i>
-                        <p> Professores </p>
-                    </a>
-                </li>
+                @can('viewAny', App\Models\Personal::class)
+                    <li class="nav-item">
+                        <a class="nav-link  {{ Route::is('personals.index') ? 'active' : '' }}"
+                        href="{{ route('personals.index') }}"
+                        >
+                            <i class="fas fa-fw far fa-chalkboard-teacher "></i>
+                            <p> Professores </p>
+                        </a>
+                    </li>
+                @endcan
 
-                <li class="nav-item">
-                    <a class="nav-link {{ Route::is('admin.index') ? 'active' : '' }}"
-                      href="{{route('admin.index')}}"
-                    >
-                        <i class="fas fa-fw fas fa-user-cog "></i>
-                        <p> Administradores </p>
-                    </a>
-                </li>
+                @can('viewAny', App\Models\Admin::class)
+                    <li class="nav-item">
+                        <a class="nav-link {{ Route::is('admin.index') ? 'active' : '' }}"
+                        href="{{route('admin.index')}}"
+                        >
+                            <i class="fas fa-fw fas fa-user-cog "></i>
+                            <p> Administradores </p>
+                        </a>
+                    </li>
+                @endcan
 
-                <li class="nav-item">
-                    <a class="nav-link  {{ Route::is('equipaments.index') ? 'active' : '' }}"
-                    href="{{route('equipaments.index')}}"
-                    >
-                        <i class="fas fa-fw fal fa-dumbbell "></i>
-                        <p> Equipamentos </p>
-                    </a>
-                </li>
+                @can('viewAny', App\Models\Equipament::class)
+                    <li class="nav-item">
+                        <a class="nav-link  {{ Route::is('equipaments.index') ? 'active' : '' }}"
+                        href="{{route('equipaments.index')}}"
+                        >
+                            <i class="fas fa-fw fal fa-dumbbell "></i>
+                            <p> Equipamentos </p>
+                        </a>
+                    </li>
+                @endcan
 
-                <li class="nav-item">
-                  <a class="nav-link  {{ Route::is('exercises.index') ? 'active' : '' }}"
-                  href="{{route('exercises.index')}}"
-                  >
-                      <i class="fas fa-fw fal fa-solid fa-person-running"></i>
-                      <p> Exercícios </p>
-                  </a>
-                </li>
+                @can('viewAny', App\Models\Exercise::class)
+                    <li class="nav-item">
+                        <a class="nav-link  {{ Route::is('exercises.index') ? 'active' : '' }}"
+                        href="{{route('exercises.index')}}"
+                        >
+                            <i class="fas fa-fw fal fa-solid fa-person-running"></i>
+                            <p> Exercícios </p>
+                        </a>
+                    </li>
+                @endcan
 
-                <li class="nav-item">
-                    <a class="nav-link  {{ Route::is('cards.index') ? 'active' : '' }}"
-                    href="{{route('cards.index')}}"
-                    >
-                        <i class="fas fa-fw fal fa-solid fa-th-list"></i>
-                        <p> Fichas </p>
-                    </a>
-                </li>
+                @can('viewAny', App\Models\Card::class)
+                    <li class="nav-item">
+                        <a class="nav-link  {{ Route::is('cards.index') ? 'active' : '' }}"
+                        href="{{route('cards.index')}}"
+                        >
+                            <i class="fas fa-fw fal fa-solid fa-th-list"></i>
+                            <p> Fichas </p>
+                        </a>
+                    </li>
+                @endcan
 
 
-              <li class="nav-item">
-                <a class="nav-link  {{ Route::is('alunosPendentes.index') ? 'active' : '' }}"
-                href="{{route('alunosPendentes.index')}}"
-                >
-                    <i class="fas fa-fw far fa-chalkboard-teacher "></i>
-                    <p> Alunos Pendentes </p>
-                </a>
-            </li>
+                @can('viewAny', App\Models\Admin::class)
+                    <li class="nav-item">
+                        <a class="nav-link  {{ Route::is('alunosPendentes.index') ? 'active' : '' }}"
+                        href="{{route('alunosPendentes.index')}}"
+                        >
+                            <i class="fas fa-fw far fa-chalkboard-teacher "></i>
+                            <p> Alunos Pendentes </p>
+                        </a>
+                    </li>
+                @endcan
 
-              <li class="nav-item">
-                <a class="nav-link  {{ Route::is('professoresPendentes.index') ? 'active' : '' }}"
-                href="{{route('professoresPendentes.index')}}"
-                >
-                    <i class="fas fa-fw far fa-chalkboard-teacher "></i>
-                    <p> Professores Pendentes </p>
-                </a>
-            </li>
+                @can('viewAny', App\Models\Admin::class)
+                    <li class="nav-item">
+                        <a class="nav-link  {{ Route::is('professoresPendentes.index') ? 'active' : '' }}"
+                        href="{{route('professoresPendentes.index')}}"
+                        >
+                            <i class="fas fa-fw far fa-chalkboard-teacher "></i>
+                            <p> Professores Pendentes </p>
+                        </a>
+                    </li>
+                @endcan
 
             </ul>
         </nav>
