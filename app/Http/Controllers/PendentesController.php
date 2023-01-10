@@ -8,26 +8,14 @@ use Illuminate\Http\Request;
 class PendentesController extends Controller
 {
     public function alunos(){
-        $alunos = User::where('type', "2")->get();
-        $alunos = $alunos->filter(function ($aluno){
-            if($aluno->status != "0"){
-                return false;
-            }
-            return true;       
-        });
+        $alunos = User::where('type', "2")->where('status', "0")->get();
 
         return view('pendentes.alunos', compact('alunos'));
     }
 
     public function professores(){
-        $professores = User::where('type', "1")->get();
-        $professores = $professores->filter(function ($professor){
-            if($professor->status != "0"){
-                return false;
-            }
-            return true;       
-        });
-
+        $professores = User::where('type', "1")->where('status', "0")->get();
+        
         return view('pendentes.professores', compact('professores'));
     }
 
@@ -38,7 +26,6 @@ class PendentesController extends Controller
     }
 
     public function confirmaProfessor(User $professor){
-        dd($professor);
         $professor->status = "1";
         $professor->save();
         return redirect('/professores/pendentes');
@@ -51,6 +38,6 @@ class PendentesController extends Controller
 
     public function recusaProfessor(User $professor){
         $professor->delete();
-        return redirect('/alunos/pendentes');
+        return redirect('/professores/pendentes');
     }
 }

@@ -51,6 +51,17 @@
                     {{ __('Log in') }}
                 </x-primary-button>
             </div>
+
+            
         </form>
+        <div class="flex items-center justify-center mt-4">
+            <p>Não tem conta? Registre-se:</p>
+        </div>
+        <div class="flex items-center justify-center mt-4">
+            <a href="/registroProfessor"><button class="btn btn-danger">Sou Professor!</button></a>
+        </div>
+        <div class="flex items-center justify-center mt-4">
+            <a href="/registroAluno"><button class="btn btn-danger">Sou Aluno!</button></a>
+        </div>
     </x-auth-card>
 </x-guest-layout>

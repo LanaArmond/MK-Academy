@@ -18,7 +18,7 @@ class PersonalController extends Controller
      */
     public function index()
     {
-        $personals = User::where('type', "1")->get();
+        $personals = User::where('type', "1")->where('status', "1")->get();
         return view('personals.index', compact('personals'));
     }
 

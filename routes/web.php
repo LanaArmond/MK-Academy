@@ -9,10 +9,11 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SendMailController;
 use App\Http\Controllers\PersonalController;
 use App\Http\Controllers\CardController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TrainingModeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-
-
+use Monolog\Registry;
 
 /*
 |--------------------------------------------------------------------------
@@ -86,11 +87,19 @@ Route::middleware('auth', 'pendent')->group(function () {
     Route::get('/trainingMode/{card}', [TrainingModeController::class, 'trainingMode'])->name('card.trainingMode');
 
     
-    Route::get('/registroAluno', [RegisterController::class, 'registraAlunoIndex'])->name('registraAluno.index');
-    Route::post('/registro/aluno', [RegisterController::class, 'registraAluno'])->name('registra.aluno');
-    Route::get('/registroProfessor', [RegisterController::class, 'registraProfessorIndex'])->name('registraProfessor.index');
-    Route::post('/registro/professor', [RegisterController::class, 'registraProfessor'])->name('registra.professor');
+    
+    // rotas de register
 });
 
+Route::get('/registroAluno', [RegisterController::class, 'indexAluno'])->name('registraAluno.index');
+Route::post('/registro/aluno', [RegisterController::class, 'registraAluno'])->name('registra.aluno');
+Route::get('/registroProfessor', [RegisterController::class, 'indexProfessor'])->name('registraProfessor.index');
+Route::post('/registro/professor', [RegisterController::class, 'registraProfessor'])->name('registra.professor');
 
 require __DIR__.'/auth.php';
+// Route::get('/register/professor', [RegisterController::class, 'indexProfessor'])->name('register.professor');
+// Route::get('/register/aluno', [RegisterController::class, 'indexAluno'])->name('register.aluno');
+// Route::post('/register/professor/store', [RegisterController::class, 'storeRegisteredProfessor'])->name('storeRegister.professor');
+// Route::post('/register/store/aluno', [RegisterController::class, 'storeRegisteredAluno']);
+
+// Route::post('/register/professor/store', [UserController::class, 'storeProfessor']);

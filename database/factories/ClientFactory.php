@@ -26,6 +26,7 @@ class ClientFactory extends Factory
             'birth_date' => $this->faker->date(),
             'registration_date' => $this->faker->date(),
             'type' => User::CLIENT,
+            'status' => "1",
         ];
     }
 }
