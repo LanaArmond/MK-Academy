@@ -1,2 +1,2 @@
-Hey {{ $name }} <br>, 
+Hey {{ $name }} <br>
 PARABÉNS PELO SEU ANIVERSARIO !

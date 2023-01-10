@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use App\Models\User;
 use App\Jobs\sendBirthdayMailJob;
+use Carbon\Carbon;
 
 class SendBirthdayMail extends Command
 {
@@ -31,10 +32,19 @@ class SendBirthdayMail extends Command
     {
         date_default_timezone_set('America/Sao_Paulo');
 
-        $users = User::where('type', 2)->where('birth_date', date('Y-m-d'))->get();
+        $now = Carbon::now();
+        $day = $now->day;
+        $month = $now->month;
+
+        $users = User::where('type', 2)->get();
 
         foreach($users as $user){
-            sendBirthdayMailJob::dispatch($user);
+            
+            $userBirthDate = Carbon::create($user->birth_date);
+            
+            if($userBirthDate->day == $day && $userBirthDate->month == $month){
+                sendBirthdayMailJob::dispatch($user);
+            }
         }
 
         return Command::SUCCESS;
