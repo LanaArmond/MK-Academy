@@ -58,10 +58,10 @@
             <p>Não tem conta? Registre-se:</p>
         </div>
         <div class="flex items-center justify-center mt-4">
-            <a href="/registroProfessor"><button class="btn btn-danger">Sou Professor!</button></a>
+            <a href="/registroProfessor"><button class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">Sou Professor!</button></a>
         </div>
         <div class="flex items-center justify-center mt-4">
-            <a href="/registroAluno"><button class="btn btn-danger">Sou Aluno!</button></a>
+            <a href="/registroAluno"><button class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">Sou Aluno!</button></a>
         </div>
     </x-auth-card>
 </x-guest-layout>
