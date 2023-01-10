@@ -8,7 +8,16 @@
 @section('content')
 
 <div id="app" class="container-fluid">
-
+                     
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
     <div class="col-md-10 offset-md-1 col-12">
         <div class="card card-outline">
             <div class="card-header card-outline card-danger">
@@ -60,4 +69,26 @@
 
     </div>
 @stop
+ 
+@push('scripts')
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.0/jquery.mask.js"></script>
 
+    <script>
+        
+        //VISUALIZAÇÃO DE SENHA
+        $(document).ready(function(){
+            $('#visible').click(function(){
+                if($('#password').attr('type') == 'password'){
+                    $('#password').attr('type', 'text');
+                    $('#icon').removeClass('fa-eye-slash');
+                    $('#icon').addClass('fa-eye');
+                }else{
+                    $('#password').attr('type', 'password');
+                    $('#icon').removeClass('fa-eye');
+                    $('#icon').addClass('fa-eye-slash');
+                }
+            });
+        });
+
+    </script>
+@endpush

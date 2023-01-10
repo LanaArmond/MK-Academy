@@ -6,9 +6,18 @@
 @stop
 
 @section('content')
+@include('includes.success')
 
 <div id="app" class="container-fluid">
-                    
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif 
     <div class="col-md-10 offset-md-1 col-12">
         <div class="card card-outline">
             <div class="card-header card-outline card-danger">
@@ -43,3 +52,6 @@
     </div>
 @stop
  
+@push('scripts')
+    <script src="{{ asset('js/components/sweetAlert.js') }}"></script>
+@endpush

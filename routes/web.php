@@ -9,6 +9,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SendMailController;
 use App\Http\Controllers\PersonalController;
 use App\Http\Controllers\CardController;
+use App\Http\Controllers\TrainingModeController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -24,12 +25,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 
 Route::middleware('auth', 'pendent')->group(function () {
+
+    Route::get('/', function () {
+        return view('dashboard');
+    });
+
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->middleware(['auth', 'verified'])->name('dashboard');
@@ -78,6 +81,10 @@ Route::middleware('auth', 'pendent')->group(function () {
     Route::put('/personal/{personal}/update/', [PersonalController::class, 'update'])->name('personals.update');
     Route::delete('/personal/{personal}/destroy', [PersonalController::class, 'destroy'])->name('personals.destroy');
     Route::get('/personal/{personal}/show', [PersonalController::class, 'show'])->name('personals.show');
+    
+    //Training mode
+    Route::get('/trainingMode/{card}', [TrainingModeController::class, 'trainingMode'])->name('card.trainingMode');
+
     
     Route::get('/registroAluno', [RegisterController::class, 'registraAlunoIndex'])->name('registraAluno.index');
     Route::post('/registro/aluno', [RegisterController::class, 'registraAluno'])->name('registra.aluno');

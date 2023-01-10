@@ -22,12 +22,14 @@
                                 <td>{{ $card->client->name ?? null }}</td>
                                 <td class="options d-flex justify-content-end">
 
+                                        <a href="{{ route('card.trainingMode', $card->id) }}" class="btn btn-sm btn-success mr-1"><i class="fas fa-flag"></i></a>
+
                                     {{-- @can('update', $card) --}}
-                                        <a href="{{ route('cards.edit', $card->id) }}" class="btn btn-sm btn-success mr-1"><i class="fas fa-pen"></i></a>
+                                        <a href="{{ route('cards.edit', $card->id) }}" class="btn btn-sm btn-primary mr-1"><i class="fas fa-pen"></i></a>
                                     {{-- @endcan --}}
 
                                     {{-- @can('view', $card) --}}
-                                        <a href="{{ route('cards.show', $card->id) }}" class="btn btn-sm btn-primary mr-1"><i class="fas fa-eye"></i></a>
+                                        <a href="{{ route('cards.show', $card->id) }}" class="btn btn-sm btn-secondary mr-1"><i class="fas fa-eye"></i></a>
                                     {{-- @endcan --}}
 
                                     {{-- @can('delete', $card) --}}

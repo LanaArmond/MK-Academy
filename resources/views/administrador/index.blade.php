@@ -7,6 +7,8 @@
 @stop
 
 @section('content')
+@include('includes.success')
+
 
     <div class="py-2 d-flex justify-content-end">
         <a type="button" class="mx-2 btn btn-dark" href="{{ route('admin.create') }}">Adicionar Novo</a>
@@ -50,6 +52,6 @@
     <link rel="stylesheet" href="/css/admin_custom.css">
 @stop
 
-@section('js')
-    <script> console.log('Hi!'); </script>
-@stop
+@push('scripts')
+    <script src="{{ asset('js/components/sweetAlert.js') }}"></script>
+@endpush
