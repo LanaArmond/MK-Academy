@@ -10,7 +10,7 @@
           <x-dropdown align="right" width="48">
               <x-slot name="trigger">
                   <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                      <div>{{ Auth::user()->getDecrypted(Auth::user()->name) }}</div>
+                      <div>{{ Auth::user()->name }}</div>
 
                       <div class="ml-1">
                           <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -52,7 +52,7 @@
                     alt="User Image">
             </div>
             <div class="info text-white">
-                {{ Auth::user()->getDecrypted(Auth::user()->name) }}
+                {{ Auth::user()->name }}
             </div>
         </div>
 
@@ -63,7 +63,7 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                <li class="nav-item">
-                  <a class="nav-link {{ Route::is('clients.index') ? 'active' : '' }}"  
+                  <a class="nav-link {{ Route::is('clients.index') ? 'active' : '' }}"
                     href="{{ route('clients.index') }}"
                   >
                       <i class="fas fa-fw fa-users "></i>
@@ -72,8 +72,8 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link  {{ Route::is('teachers.index') ? 'active' : '' }}"
-                      {{-- href="{{ route('teachers.index') }}" --}}
+                    <a class="nav-link  {{ Route::is('personals.index') ? 'active' : '' }}"
+                      href="{{ route('personals.index') }}"
                     >
                         <i class="fas fa-fw far fa-chalkboard-teacher "></i>
                         <p> Professores </p>
@@ -81,7 +81,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link {{ Route::is('admin.index') ? 'active' : '' }}" 
+                    <a class="nav-link {{ Route::is('admin.index') ? 'active' : '' }}"
                       href="{{route('admin.index')}}"
                     >
                         <i class="fas fa-fw fas fa-user-cog "></i>
@@ -90,7 +90,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link  {{ Route::is('equipaments.index') ? 'active' : '' }}" 
+                    <a class="nav-link  {{ Route::is('equipaments.index') ? 'active' : '' }}"
                     href="{{route('equipaments.index')}}"
                     >
                         <i class="fas fa-fw fal fa-dumbbell "></i>
@@ -99,13 +99,22 @@
                 </li>
 
                 <li class="nav-item">
-                  <a class="nav-link  {{ Route::is('exercises.index') ? 'active' : '' }}" 
+                  <a class="nav-link  {{ Route::is('exercises.index') ? 'active' : '' }}"
                   href="{{route('exercises.index')}}"
                   >
                       <i class="fas fa-fw fal fa-solid fa-person-running"></i>
                       <p> Exercícios </p>
                   </a>
-              </li>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link  {{ Route::is('cards.index') ? 'active' : '' }}"
+                    href="{{route('cards.index')}}"
+                    >
+                        <i class="fas fa-fw fal fa-solid fa-th-list"></i>
+                        <p> Fichas </p>
+                    </a>
+                </li>
 
 
               <li class="nav-item">
@@ -125,7 +134,7 @@
                     <p> Professores Pendentes </p>
                 </a>
             </li>
-                
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

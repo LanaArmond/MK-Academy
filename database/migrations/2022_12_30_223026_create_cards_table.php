@@ -13,17 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('clients', function (Blueprint $table) {
+        Schema::create('cards', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email');
-            $table->string('cpf')->unique();
-            $table->string('password');
-            $table->string('image')->default("profile_default.png");
-            $table->string('phone');
-            $table->date('birth_date');
-            $table->date('registration_date');
-
+            $table->string('identifier');
             $table->timestamps();
         });
     }
@@ -35,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('clients');
+        Schema::dropIfExists('cards');
     }
 };

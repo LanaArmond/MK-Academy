@@ -8,7 +8,7 @@
 @section('content')
 
 <div id="app" class="container-fluid">
-                    
+
     <div class="col-md-10 offset-md-1 col-12">
         <div class="card card-outline">
             <div class="card-header card-outline card-danger">
@@ -26,17 +26,17 @@
                     <label for="email" class="required">E-mail</label>
                     <input type="email" name="email" id="email" class="form-control" required="" value="{{ old('email', $admin->email) }}">
                 </div>
-                
+
             </div>
             <div class="row">
                 <div class="form-group col-6">
-                    <label for="password">Senha</label> 
+                    <label for="password">Senha</label>
                     <div class="input-group">
                         <div class="input-group-append" id="visible">
                             <span class="input-group-text rounded-left border-right-0" id="span">
                                 <i class="fa fa-eye-slash" id="icon"></i>
-                            </span> 
-                        </div>    
+                            </span>
+                        </div>
                         <input autocomplete="new-password" type="password" class="senhaID form-control" name="password" id="password">
                     </div>
                 </div>
@@ -46,7 +46,7 @@
                 </div>
             </div>
         </div>
-        <div class="form-group col-sm-6">  
+        <div class="form-group col-sm-6">
             <label for="picture">Imagem </label>
             <input type="file" accept="image/*" class="form-control-file" id="picture" name="picture">
         </div>
@@ -57,7 +57,7 @@
     </form>
         </div>
     </div>
-    
+
     </div>
 @stop
- 
+

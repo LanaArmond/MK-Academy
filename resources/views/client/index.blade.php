@@ -20,7 +20,7 @@
                             <img class="profile-user-img img-fluid img-circle" style="height: 100px;width:100px" src="{{ asset("img/profilePic/" . $client->picture ) }}" alt="User profile picture">
                         </div>
                         <br>
-                        <h3 class="profile-username text-center">{{ $client->getDecrypted($client->name)}}</h3>
+                        <h3 class="profile-username text-center">{{ $client->name}}</h3>
                         <div class="options text-center d-flex mt-2 justify-content-center">
                             {{-- @can('view', $admin) --}}
                             <a href="{{ route('clients.show', $client->id) }}" class="btn btn-dark mr-2"><i class="fas fa-eye"></i></a>

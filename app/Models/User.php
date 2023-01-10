@@ -13,10 +13,54 @@ use Illuminate\Support\Facades\Storage;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
-    
+
     public function getDecrypted($value){
         return Crypt::decryptString($value);
     }
+
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = Crypt::encrypt($value);
+    }
+
+    public function getNameAttribute($value)
+    {
+        if (is_null($value)) {
+            return $value;
+        }
+        return Crypt::decrypt($value);
+    }
+
+    public function setCpfAttribute($value)
+    {
+        $this->attributes['cpf'] = Crypt::encrypt($value);
+    }
+
+    public function getCpfAttribute($value)
+    {
+        if (is_null($value)) {
+            return $value;
+        }
+        return Crypt::decrypt($value);
+    }
+
+    public function setNumberAttribute($value)
+    {
+        $this->attributes['number'] = Crypt::encrypt($value);
+    }
+
+    public function getNumberAttribute($value)
+    {
+        if (is_null($value)) {
+            return $value;
+        }
+        return Crypt::decrypt($value);
+    }
+
+    const ADMIN = 0;
+    const PERSONAL = 1;
+    const CLIENT = 2;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -33,7 +77,7 @@ class User extends Authenticatable
         'birth_date',
         'registration_date',
         'type', // 0 para admin, 1 para professor 2 para aluno
-        'status' // 0 para pendente e 1 para ativo 
+        'status' // 0 para pendente e 1 para ativo
     ];
 
     /**
@@ -55,7 +99,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function cards(){
+    public function cards()
+    {
         return $this->hasMany(Card::class);
     }
 }

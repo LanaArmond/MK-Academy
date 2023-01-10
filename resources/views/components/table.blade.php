@@ -1,13 +1,13 @@
-@if ($body != '' ) 
+@if ($body != '' )
     <div class="card">
         @if (isset($create) || isset($title))
-            <div class="card-header card-outline card-primary">
+            <div class="card-header card-outline card-danger">
                 <h3 class="float-left m-0 table-title"><strong>{{ $title ?? null }}</strong></h3>
                 @if (isset($create))
                     <div class="float-right mr-2">
                         <div class="input-group input-group-sm">
                             <a href="{{ $create }}">
-                                <button type="button" class="btn btn-dark button-create">
+                                <button type="button" class="btn btn-danger button-create">
                                     <b><i class="fas fa-plus-circle"></i> Adicionar</b>
                                 </button>
                             </a>
