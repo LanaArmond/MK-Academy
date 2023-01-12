@@ -19,7 +19,18 @@ Universidade Federal de Juiz de Fora - MG - Brasil
 
 ## Como rodar o projeto localmente
 
-...
+\* É necessário ter o _PHP 8.1+_ e o _Laravel 9_ instalados.
+1. Abra o Terminal na Pasta do Projeto;
+2. Instale as dependências necessárias: `composer install`;
+3. Atualize as dependências: `composer update`;
+4. Rode o comando `php artisan storage:link` para linkar a pasta de storage com a pasta public;
+5. Crie um arquivo .env na pasta raiz e após isso copie o conteudo do .env.example para dentro do arquivo .env;
+6. Crie uma key com `php artisan key:generate`. A key servira para as hashes;
+7. Crie um banco de dados `sql` com o nome de `laravel`;
+8. Rode as migrations com o comando php artisan migrate --seed;
+9. Instale o npm com `npm install` e depois rode `npm run dev` e `npm run build`;
+10. Rode o comando: `php artisan serve` para iniciar o servidor;
+
 
 ____________________________________________________________________________________________________
 
